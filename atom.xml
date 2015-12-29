@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title><![CDATA[WangJinPing]]></title>
+  
+  <link href="/atom.xml" rel="self"/>
+  <link href="http://yoursite.com/"/>
+  <updated>2015-12-29T07:45:18.112Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name><![CDATA[WangJinPing]]></name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[第一篇日志]]></title>
+    <link href="http://yoursite.com/2015/12/29/hello-hexo/"/>
+    <id>http://yoursite.com/2015/12/29/hello-hexo/</id>
+    <published>2015-12-29T02:48:36.000Z</published>
+    <updated>2015-12-29T07:45:18.112Z</updated>
+    <content type="html"><![CDATA[<p>第一篇日志终于出炉了。给大家介绍一下安装步骤。</p>
+<h2 id="u7B2C_u4E00_u6B65"><a href="#u7B2C_u4E00_u6B65" class="headerlink" title="第一步"></a>第一步</h2><h3 id="1"><a href="#1" class="headerlink" title="1"></a>1</h3><p>下载hexo<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget www<span class="class">.baidu</span><span class="class">.com</span>/hexo<span class="class">.tar</span><span class="class">.gz</span></span><br></pre></td></tr></table></figure></p>
+<p>或者从此处下载：<a href="http://www.hexo.io" target="_blank" rel="external">hexo</a></p>
+<h3 id="2"><a href="#2" class="headerlink" title="2"></a>2</h3><p>解压hexo<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf hexo<span class="class">.tar</span><span class="class">.gz</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="3"><a href="#3" class="headerlink" title="3"></a>3</h3><p>配置环境<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">vim</span> <span class="class">.bashrc</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="u7B2C_u4E8C_u6B65"><a href="#u7B2C_u4E8C_u6B65" class="headerlink" title="第二步"></a>第二步</h2><h3 id="1-1"><a href="#1-1" class="headerlink" title="1"></a>1</h3><p>安装npm<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-<span class="keyword">get</span> install npm</span><br></pre></td></tr></table></figure></p>
+<p>###2<br>安装node.js<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install <span class="keyword">node</span><span class="identifier"></span><span class="title"></span></span><br></pre></td></tr></table></figure></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>第一篇日志终于出炉了。给大家介绍一下安装步骤。</p>
+<h2 id="u7B2C_u4E00_u6B65"><a href="#u7B2C_u4E00_u6B65" class="headerlink" title="第一步"></a>第一步</h2><h3 id="1"]]>
+    </summary>
+    
+      <category term="日志" scheme="http://yoursite.com/tags/%E6%97%A5%E5%BF%97/"/>
+    
+      <category term="日志" scheme="http://yoursite.com/categories/%E6%97%A5%E5%BF%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[hello world]]></title>
+    <link href="http://yoursite.com/2015/12/25/hello-world/"/>
+    <id>http://yoursite.com/2015/12/25/hello-world/</id>
+    <published>2015-12-25T06:52:44.000Z</published>
+    <updated>2015-12-29T07:45:33.317Z</updated>
+    <content type="html"><![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick_Start"><a href="#Quick_Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create_a_new_post"><a href="#Create_a_new_post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run_server"><a href="#Run_server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate_static_files"><a href="#Generate_static_files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">###产生</span></span><br><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy_to_remote_sites"><a href="#Deploy_to_remote_sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io]]>
+    </summary>
+    
+      <category term="日志" scheme="http://yoursite.com/tags/%E6%97%A5%E5%BF%97/"/>
+    
+      <category term="日志" scheme="http://yoursite.com/categories/%E6%97%A5%E5%BF%97/"/>
+    
+  </entry>
+  
+</feed>
