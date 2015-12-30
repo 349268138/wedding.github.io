@@ -37,4 +37,23 @@
     
   </entry>
   
+  <entry>
+    <title><![CDATA[java源码之Iterator]]></title>
+    <link href="http://jinpingwang.github.io/2015/10/30/javaSourceCode/java.util/Iterator/"/>
+    <id>http://jinpingwang.github.io/2015/10/30/javaSourceCode/java.util/Iterator/</id>
+    <published>2015-10-30T02:07:21.000Z</published>
+    <updated>2015-12-30T07:29:19.556Z</updated>
+    <content type="html"><![CDATA[<h3 id="u6E90_u4EE3_u7801"><a href="#u6E90_u4EE3_u7801" class="headerlink" title="源代码"></a>源代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Iterator</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">E <span class="title">next</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> UnsupportedOperationException(<span class="string">"remove"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">forEachRemaining</span><span class="params">(Consumer&lt;? <span class="keyword">super</span> E&gt; action)</span> </span>&#123;</span><br><span class="line">        Objects.requireNonNull(action);</span><br><span class="line">        <span class="keyword">while</span> (hasNext())</span><br><span class="line">            action.accept(next());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="u5256_u6790"><a href="#u5256_u6790" class="headerlink" title="剖析"></a>剖析</h3><p>Iterator<e>就是一个接口，很简单，没什么好讲的。要注意一点就是<br><code>forEachRemaining(Consumer&lt;? super E&gt; action)</code><br>这个函数是1.8版本才有的，之前的版本没有。</e></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h3 id="u6E90_u4EE3_u7801"><a href="#u6E90_u4EE3_u7801" class="headerlink" title="源代码"></a>源代码</h3><figure class="highlight java"><table><tr]]>
+    </summary>
+    
+      <category term="java.util" scheme="http://jinpingwang.github.io/tags/java-util/"/>
+    
+      <category term="java.util" scheme="http://jinpingwang.github.io/categories/java-util/"/>
+    
+  </entry>
+  
 </feed>
