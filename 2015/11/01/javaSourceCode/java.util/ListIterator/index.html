@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="java.lang,java源码," />
+  <meta name="keywords" content="java.util,java源码," />
 
 
 
@@ -53,16 +53,16 @@
 
 
 
-<meta name="description" content="源代码12345678910package java.lang;/** * x.clone()!=x 为true,就是说他们不是同一个对象. * x.clone().getClass()==x.getClass() 为true,他们是同一个类型Class. * x.equals(x.clone()) 为true,逻辑上应该相当. */public interface Cloneable &amp;#123">
+<meta name="description" content="源代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394package java.util;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java源码之Cloneable">
-<meta property="og:url" content="http://jinpingwang.github.io/2015/10/31/javaSourceCode/java.lang/Cloneable/index.html">
+<meta property="og:title" content="java源码之ListIterator">
+<meta property="og:url" content="http://jinpingwang.github.io/2015/11/01/javaSourceCode/java.util/ListIterator/index.html">
 <meta property="og:site_name" content="WangJinPing">
-<meta property="og:description" content="源代码12345678910package java.lang;/** * x.clone()!=x 为true,就是说他们不是同一个对象. * x.clone().getClass()==x.getClass() 为true,他们是同一个类型Class. * x.equals(x.clone()) 为true,逻辑上应该相当. */public interface Cloneable &amp;#123">
-<meta property="og:updated_time" content="2015-12-31T01:48:07.392Z">
+<meta property="og:description" content="源代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394package java.util;">
+<meta property="og:updated_time" content="2015-12-31T02:26:08.268Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java源码之Cloneable">
-<meta name="twitter:description" content="源代码12345678910package java.lang;/** * x.clone()!=x 为true,就是说他们不是同一个对象. * x.clone().getClass()==x.getClass() 为true,他们是同一个类型Class. * x.equals(x.clone()) 为true,逻辑上应该相当. */public interface Cloneable &amp;#123">
+<meta name="twitter:title" content="java源码之ListIterator">
+<meta name="twitter:description" content="源代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394package java.util;">
 
 
 
@@ -74,7 +74,7 @@
   };
 </script>
 
-  <title> java源码之Cloneable | WangJinPing </title>
+  <title> java源码之ListIterator | WangJinPing </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -237,7 +237,7 @@
             
             
               
-                java源码之Cloneable
+                java源码之ListIterator
               
             
           </h1>
@@ -246,8 +246,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-10-31T21:31:11+08:00" content="2015-10-31">
-              2015-10-31
+            <time itemprop="dateCreated" datetime="2015-11-01T21:21:34+08:00" content="2015-11-01">
+              2015-11-01
             </time>
           </span>
 
@@ -256,8 +256,8 @@
               &nbsp; | &nbsp; 分类于
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/java-lang/" itemprop="url" rel="index">
-                    <span itemprop="name">java.lang</span>
+                  <a href="/categories/java-util/" itemprop="url" rel="index">
+                    <span itemprop="name">java.util</span>
                   </a>
                 </span>
 
@@ -272,8 +272,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/10/31/javaSourceCode/java.lang/Cloneable/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/31/javaSourceCode/java.lang/Cloneable/" itemprop="commentsCount"></span>
+                <a href="/2015/11/01/javaSourceCode/java.util/ListIterator/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/01/javaSourceCode/java.util/ListIterator/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -292,8 +292,12 @@
       
 
       
-        <span itemprop="articleBody"><h3 id="u6E90_u4EE3_u7801"><a href="#u6E90_u4EE3_u7801" class="headerlink" title="源代码"></a>源代码</h3><figure class="highlight sml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">package java.lang;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * x.clone<span class="literal">()</span>!=x 为<span class="literal">true</span>,就是说他们不是同一个对象.</span><br><span class="line"> * x.clone<span class="literal">()</span>.getClass<span class="literal">()</span>==x.getClass<span class="literal">()</span> 为<span class="literal">true</span>,他们是同一个类型<span class="type">Class</span>.</span><br><span class="line"> * x.equals(x.clone<span class="literal">()</span>) 为<span class="literal">true</span>,逻辑上应该相当.</span><br><span class="line"> */</span><br><span class="line">public interface <span class="type">Cloneable</span> &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="u5256_u6790"><a href="#u5256_u6790" class="headerlink" title="剖析"></a>剖析</h3><p>这个接口没有定义任何方法，其实只是作为一个标记而已</p>
+        <span itemprop="articleBody"><h3 id="u6E90_u4EE3_u7801"><a href="#u6E90_u4EE3_u7801" class="headerlink" title="源代码"></a>源代码</h3><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line">package java.util;</span><br><span class="line"></span><br><span class="line">/<span class="keyword">*</span><span class="keyword">*</span></span><br><span class="line"> <span class="keyword">*</span> A &#123;<span class="comment">@code ListIterator&#125;</span></span><br><span class="line"> <span class="keyword">*</span> has no current element; its <span class="variable">&lt;I&gt;</span>cursor position<span class="variable">&lt;/I&gt;</span> always</span><br><span class="line"> <span class="keyword">*</span> lies between the element that would be returned by a call</span><br><span class="line"> <span class="keyword">*</span> to &#123;<span class="comment">@code previous()&#125; and the element that would be</span></span><br><span class="line"> <span class="keyword">*</span> returned by a call to &#123;<span class="comment">@code next()&#125;.</span></span><br><span class="line"> <span class="keyword">*</span></span><br><span class="line"> <span class="keyword">*</span>An iterator for a list of length &#123;<span class="comment">@code n&#125; has &#123;@code n+1&#125; possible</span></span><br><span class="line"> <span class="keyword">*</span> cursor positions, as illustrated by the carets (&#123;<span class="comment">@code ^&#125;) below:</span></span><br><span class="line"> <span class="keyword">*</span> <span class="variable">&lt;PRE&gt;</span></span><br><span class="line"> <span class="keyword">*</span>                      Element(0)   Element(1)   Element(2)   ... Element(n-1)</span><br><span class="line"> <span class="keyword">*</span> cursor positions:  ^            ^            ^            ^                  ^</span><br><span class="line"> <span class="keyword">*</span> <span class="variable">&lt;/PRE&gt;</span></span><br><span class="line"> <span class="keyword">*</span></span><br><span class="line"> <span class="keyword">*</span>这一句话没看懂：</span><br><span class="line"> <span class="keyword">*</span>Note that the &#123;<span class="comment">@link #remove&#125; and &#123;@link #set(Object)&#125; methods are</span></span><br><span class="line"> <span class="keyword">*</span> <span class="variable">&lt;i&gt;</span>not<span class="variable">&lt;/i&gt;</span> defined in terms of the cursor position;  they are defined to</span><br><span class="line"> <span class="keyword">*</span> operate on the last element returned by a call to &#123;<span class="comment">@link #next&#125; or</span></span><br><span class="line"> <span class="keyword">*</span> &#123;<span class="comment">@link #previous()&#125;.</span></span><br><span class="line"> <span class="keyword">*</span> </span><br><span class="line"> <span class="keyword">*</span> 2015-11-6解释：</span><br><span class="line"> <span class="keyword">*</span>  ArrayList als=new ArrayList();</span><br><span class="line">	als.add(<span class="string">"hello"</span>);</span><br><span class="line">	als.add(<span class="string">"world"</span>);</span><br><span class="line">	ListIterator<span class="variable">&lt;String&gt;</span> lis=als.listIterator();</span><br><span class="line">	lis.next();</span><br><span class="line">	lis.remove();</span><br><span class="line">	则删除的是hello;</span><br><span class="line">	</span><br><span class="line">	ArrayList als=new ArrayList();</span><br><span class="line">	als.add(<span class="string">"hello"</span>);</span><br><span class="line">	als.add(<span class="string">"world"</span>);</span><br><span class="line">	ListIterator<span class="variable">&lt;String&gt;</span> lis=als.listIterator();</span><br><span class="line">	lis.next();</span><br><span class="line">	lis.next();</span><br><span class="line">	lis.previous();</span><br><span class="line">	lis.remove();</span><br><span class="line">	则删除的是world;</span><br><span class="line"> <span class="keyword">*</span></span><br><span class="line"> <span class="keyword">*</span>/</span><br><span class="line">public interface ListIterator<span class="variable">&lt;E&gt;</span> extends Iterator<span class="variable">&lt;E&gt;</span> &#123;</span><br><span class="line">	boolean hasNext();</span><br><span class="line">	</span><br><span class="line">	//cursor往后移一步</span><br><span class="line">	E next();</span><br><span class="line">	</span><br><span class="line">	boolean hasPrevious();</span><br><span class="line">	</span><br><span class="line">	//cursor往前移一步</span><br><span class="line">	E previous();</span><br><span class="line">	</span><br><span class="line">	/<span class="keyword">*</span><span class="keyword">*</span></span><br><span class="line">	 <span class="keyword">*</span> 					  Element(0)   Element(1)   Element(2)   ... Element(n-1)</span><br><span class="line">	 <span class="keyword">*</span> cursor positions: ^           ^            ^            ^ </span><br><span class="line">	 <span class="keyword">*</span>如果cursor介于Element(0)与Element(1)之间</span><br><span class="line">	 <span class="keyword">*</span>则函数返回的就是Element(1)的位置</span><br><span class="line">	 <span class="keyword">*</span>/</span><br><span class="line">	int nextIndex();</span><br><span class="line">	</span><br><span class="line">	/<span class="keyword">*</span><span class="keyword">*</span></span><br><span class="line">	 <span class="keyword">*</span> 					  Element(0)   Element(1)   Element(2)   ... Element(n-1)</span><br><span class="line">	 <span class="keyword">*</span> cursor positions: ^           ^            ^            ^ </span><br><span class="line">	 <span class="keyword">*</span>如果cursor介于Element(0)与Element(1)之间</span><br><span class="line">	 <span class="keyword">*</span>则函数返回的就是Element(0)的位置</span><br><span class="line">	 <span class="keyword">*</span>/</span><br><span class="line">	int previousIndex();</span><br><span class="line">	</span><br><span class="line">	/<span class="keyword">*</span><span class="keyword">*</span></span><br><span class="line">	 <span class="keyword">*</span> 					  Element(0)   Element(1)   Element(2)   ... Element(n-1)</span><br><span class="line">	 <span class="keyword">*</span> cursor positions: ^           ^            ^            ^ </span><br><span class="line">	 <span class="keyword">*</span>如果cursor介于Element(0)与Element(1)之间，并且最近一次访问的是next()</span><br><span class="line">	 <span class="keyword">*</span>则函数移除的就是Element(0)这个元素</span><br><span class="line">	 <span class="keyword">*</span>/</span><br><span class="line">	void remove();</span><br><span class="line"></span><br><span class="line">	/<span class="keyword">*</span><span class="keyword">*</span></span><br><span class="line">	 <span class="keyword">*</span> Replaces the last element returned by &#123;<span class="comment">@link #next&#125; or</span></span><br><span class="line">     <span class="keyword">*</span> &#123;<span class="comment">@link #previous&#125; with the specified element (optional operation).</span></span><br><span class="line">     <span class="keyword">*</span> 具体对哪个元素进行更改，需根据上一次访问的是next()还是previous()来定，同remove函数</span><br><span class="line">	 <span class="keyword">*</span> <span class="comment">@param e</span></span><br><span class="line">	 <span class="keyword">*</span>/</span><br><span class="line">	void set(E e);</span><br><span class="line">	</span><br><span class="line">	/<span class="keyword">*</span><span class="keyword">*</span></span><br><span class="line">	 <span class="keyword">*</span> 					  Element(0)   Element(1)   Element(2)   ... Element(n-1)</span><br><span class="line">	 <span class="keyword">*</span> cursor positions: ^           ^            ^            ^ </span><br><span class="line">	 <span class="keyword">*</span>如果cursor介于Element(0)与Element(1)之间</span><br><span class="line">	 <span class="keyword">*</span>则函数在Element(0)与Element(1)之间插入元素</span><br><span class="line">	 <span class="keyword">*</span>插入元素后，cursor在Element(1)前</span><br><span class="line">	 <span class="keyword">*</span>/</span><br><span class="line">	void add(E e);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="u5256_u6790"><a href="#u5256_u6790" class="headerlink" title="剖析"></a>剖析</h3><p>这个接口其实就是双向链表。要注意以下几点</p>
+<ol>
+<li>cursor与元素位置index的关系</li>
+<li>set(E e)与remove()方法的操作，需根据上一次访问的是next()还是previous()。具体详见上面的解析。</li>
+</ol>
 </span>
       
     </div>
@@ -302,7 +306,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/java-lang/" rel="tag">#java.lang</a>
+            <a href="/tags/java-util/" rel="tag">#java.util</a>
           
             <a href="/tags/java源码/" rel="tag">#java源码</a>
           
@@ -313,16 +317,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/31/javaSourceCode/java.util/AbstractCollection/" rel="next" title="java源码之AbstractCollection">
-                <i class="fa fa-chevron-left"></i> java源码之AbstractCollection
+              <a href="/2015/11/01/javaSourceCode/java.util/RandomAccess/" rel="next" title="java源码之RandomAccess">
+                <i class="fa fa-chevron-left"></i> java源码之RandomAccess
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/31/javaSourceCode/java.lang/IndexOutOfBoundsException/" rel="prev" title="java源码之IndexOutOfBoundsException">
-                java源码之IndexOutOfBoundsException <i class="fa fa-chevron-right"></i>
+              <a href="/2015/11/03/javaSourceCode/java.util/List/" rel="prev" title="java源码之List">
+                java源码之List <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -350,8 +354,8 @@
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/10/31/javaSourceCode/java.lang/Cloneable/"
-           data-title="java源码之Cloneable" data-url="http://jinpingwang.github.io/2015/10/31/javaSourceCode/java.lang/Cloneable/">
+      <div class="ds-thread" data-thread-key="2015/11/01/javaSourceCode/java.util/ListIterator/"
+           data-title="java源码之ListIterator" data-url="http://jinpingwang.github.io/2015/11/01/javaSourceCode/java.util/ListIterator/">
       </div>
     
   </div>

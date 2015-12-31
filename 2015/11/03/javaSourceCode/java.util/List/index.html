@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="java.lang,java源码," />
+  <meta name="keywords" content="java.util,java源码," />
 
 
 
@@ -53,16 +53,16 @@
 
 
 
-<meta name="description" content="源代码12345678910package java.lang;/** * x.clone()!=x 为true,就是说他们不是同一个对象. * x.clone().getClass()==x.getClass() 为true,他们是同一个类型Class. * x.equals(x.clone()) 为true,逻辑上应该相当. */public interface Cloneable &amp;#123">
+<meta name="description" content="源代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283package java.util;public interface List&amp;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java源码之Cloneable">
-<meta property="og:url" content="http://jinpingwang.github.io/2015/10/31/javaSourceCode/java.lang/Cloneable/index.html">
+<meta property="og:title" content="java源码之List">
+<meta property="og:url" content="http://jinpingwang.github.io/2015/11/03/javaSourceCode/java.util/List/index.html">
 <meta property="og:site_name" content="WangJinPing">
-<meta property="og:description" content="源代码12345678910package java.lang;/** * x.clone()!=x 为true,就是说他们不是同一个对象. * x.clone().getClass()==x.getClass() 为true,他们是同一个类型Class. * x.equals(x.clone()) 为true,逻辑上应该相当. */public interface Cloneable &amp;#123">
-<meta property="og:updated_time" content="2015-12-31T01:48:07.392Z">
+<meta property="og:description" content="源代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283package java.util;public interface List&amp;">
+<meta property="og:updated_time" content="2015-12-31T02:33:16.633Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java源码之Cloneable">
-<meta name="twitter:description" content="源代码12345678910package java.lang;/** * x.clone()!=x 为true,就是说他们不是同一个对象. * x.clone().getClass()==x.getClass() 为true,他们是同一个类型Class. * x.equals(x.clone()) 为true,逻辑上应该相当. */public interface Cloneable &amp;#123">
+<meta name="twitter:title" content="java源码之List">
+<meta name="twitter:description" content="源代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283package java.util;public interface List&amp;">
 
 
 
@@ -74,7 +74,7 @@
   };
 </script>
 
-  <title> java源码之Cloneable | WangJinPing </title>
+  <title> java源码之List | WangJinPing </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -237,7 +237,7 @@
             
             
               
-                java源码之Cloneable
+                java源码之List
               
             
           </h1>
@@ -246,8 +246,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-10-31T21:31:11+08:00" content="2015-10-31">
-              2015-10-31
+            <time itemprop="dateCreated" datetime="2015-11-03T15:43:28+08:00" content="2015-11-03">
+              2015-11-03
             </time>
           </span>
 
@@ -256,8 +256,8 @@
               &nbsp; | &nbsp; 分类于
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/java-lang/" itemprop="url" rel="index">
-                    <span itemprop="name">java.lang</span>
+                  <a href="/categories/java-util/" itemprop="url" rel="index">
+                    <span itemprop="name">java.util</span>
                   </a>
                 </span>
 
@@ -272,8 +272,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/10/31/javaSourceCode/java.lang/Cloneable/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/31/javaSourceCode/java.lang/Cloneable/" itemprop="commentsCount"></span>
+                <a href="/2015/11/03/javaSourceCode/java.util/List/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/03/javaSourceCode/java.util/List/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -292,8 +292,8 @@
       
 
       
-        <span itemprop="articleBody"><h3 id="u6E90_u4EE3_u7801"><a href="#u6E90_u4EE3_u7801" class="headerlink" title="源代码"></a>源代码</h3><figure class="highlight sml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">package java.lang;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * x.clone<span class="literal">()</span>!=x 为<span class="literal">true</span>,就是说他们不是同一个对象.</span><br><span class="line"> * x.clone<span class="literal">()</span>.getClass<span class="literal">()</span>==x.getClass<span class="literal">()</span> 为<span class="literal">true</span>,他们是同一个类型<span class="type">Class</span>.</span><br><span class="line"> * x.equals(x.clone<span class="literal">()</span>) 为<span class="literal">true</span>,逻辑上应该相当.</span><br><span class="line"> */</span><br><span class="line">public interface <span class="type">Cloneable</span> &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="u5256_u6790"><a href="#u5256_u6790" class="headerlink" title="剖析"></a>剖析</h3><p>这个接口没有定义任何方法，其实只是作为一个标记而已</p>
+        <span itemprop="articleBody"><h3 id="u6E90_u4EE3_u7801"><a href="#u6E90_u4EE3_u7801" class="headerlink" title="源代码"></a>源代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> java.util;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">List</span>&lt;<span class="title">E</span>&gt; <span class="keyword">extends</span> <span class="title">Collection</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line">	<span class="comment">/**</span><br><span class="line">	 * 1:allow duplicate elements</span><br><span class="line">	 * 2:allow null elements</span><br><span class="line">	 * 3:Lists(like Java arrays) are zero based</span><br><span class="line">	 */</span></span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">size</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(Objects o)</span></span>;</span><br><span class="line">	<span class="function">Iterator&lt;E&gt; <span class="title">iterator</span><span class="params">()</span></span>;</span><br><span class="line">	Object[] toArray();</span><br><span class="line">	&lt;T&gt; T[] toArray(T[] a);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//虽然List继承了Collection，而且Collection中也有</span></span><br><span class="line">	<span class="comment">//boolean add(E e)</span></span><br><span class="line">	<span class="comment">//但Collection中的add是只保证添加，但插入哪个位置不定</span></span><br><span class="line">	<span class="comment">//List中的add是规定只能插到最后一个位置</span></span><br><span class="line">	<span class="function"><span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">boolean</span> <span class="title">remove</span><span class="params">(Object o)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">boolean</span> <span class="title">containsAll</span><span class="params">(Collection&lt;?&gt; c)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">boolean</span> <span class="title">addAll</span><span class="params">(Collection&lt;? extends E&gt; c)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">boolean</span> <span class="title">removeAll</span><span class="params">(Collection&lt;?&gt; c)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">boolean</span> <span class="title">retainAll</span><span class="params">(Collection&lt;?&gt; c)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object o)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span></span>;</span><br><span class="line">		</span><br><span class="line">	<span class="function"><span class="keyword">boolean</span> <span class="title">addAll</span><span class="params">(<span class="keyword">int</span> index,Collection&lt;? extends E&gt; c)</span></span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//index当做是元素的位置，不当成cursor，</span></span><br><span class="line">	<span class="comment">//会比较好理解</span></span><br><span class="line">	<span class="comment">//index : [0,size())</span></span><br><span class="line">	<span class="function">E <span class="title">get</span><span class="params">(<span class="keyword">int</span> index)</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//index当做是元素的元素，不当成cursor，</span></span><br><span class="line">	<span class="comment">//会比较好理解</span></span><br><span class="line">	<span class="comment">//index : [0,size())</span></span><br><span class="line">	<span class="function">E <span class="title">set</span><span class="params">(<span class="keyword">int</span> index, E element)</span></span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//在指定位置插入元素，这个位置是[0,size()]之间</span></span><br><span class="line">	<span class="comment">//插入后，后面原先的元素都往后移一位</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> index,E element)</span></span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//删除指定位置的元素，[0,size())</span></span><br><span class="line">	<span class="function">E <span class="title">remove</span><span class="params">(<span class="keyword">int</span> index)</span></span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//查看Object o这个元素第一次出现的位置，[0,size())</span></span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">indexOf</span><span class="params">(Object o)</span></span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//查看Object o这个元素最一一次出现的位置，[0,size())</span></span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">lastIndexOf</span><span class="params">(Object o)</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//用的时用空间换取时间，先转换成数组进行排序</span></span><br><span class="line">	<span class="comment">//然后再用排序好的值来替换原来的值</span></span><br><span class="line">	<span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(Comparator&lt;? <span class="keyword">super</span> E&gt; c)</span></span>&#123;</span><br><span class="line">		Object[] a=<span class="keyword">this</span>.toArray();</span><br><span class="line">		Arrays.sort(a,(Comparator) c);</span><br><span class="line">		ListIterator&lt;E&gt; i=<span class="keyword">this</span>.listIterator();</span><br><span class="line">		<span class="keyword">for</span>(Object e:a)&#123;</span><br><span class="line">			i.next();</span><br><span class="line">			i.set((E)e);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//返回相当于头结点，next()即获得第一个结点</span></span><br><span class="line">	<span class="function">ListIterator&lt;E&gt; <span class="title">listIterator</span><span class="params">()</span></span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//返回指定点位置的前一个结点。</span></span><br><span class="line">	<span class="comment">//有3个元素，则index的值为[0,3]</span></span><br><span class="line">	<span class="comment">//listIterator(1)，则的位置为第一个元素与第二个元素之间</span></span><br><span class="line">	<span class="function">ListIterator&lt;E&gt; <span class="title">listIterator</span><span class="params">(<span class="keyword">int</span> index)</span></span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span><br><span class="line">	 * Returns a view of the portion of this list </span><br><span class="line">	 * between the specified&lt;tt&gt;fromIndex&lt;/tt&gt;, inclusive,</span><br><span class="line">	 * and &lt;tt&gt;toIndex&lt;/tt&gt;, exclusive. </span><br><span class="line">	 * 即[fromIndex,toIndex)			</span><br><span class="line">	 */</span></span><br><span class="line">	<span class="function">List&lt;E&gt; <span class="title">subList</span><span class="params">(<span class="keyword">int</span> fromIndex,<span class="keyword">int</span> toIndex)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="u5256_u6790"><a href="#u5256_u6790" class="headerlink" title="剖析"></a>剖析</h3><p>这个接口是继承于Collection接口，元素是有序的，可以对指定位置进行操作。<br>另外要注意一点的是：此接口中的add方法与Collection中的add方法不一样，如上述源代码所说。</p>
 </span>
       
     </div>
@@ -302,7 +302,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/java-lang/" rel="tag">#java.lang</a>
+            <a href="/tags/java-util/" rel="tag">#java.util</a>
           
             <a href="/tags/java源码/" rel="tag">#java源码</a>
           
@@ -313,16 +313,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/31/javaSourceCode/java.util/AbstractCollection/" rel="next" title="java源码之AbstractCollection">
-                <i class="fa fa-chevron-left"></i> java源码之AbstractCollection
+              <a href="/2015/11/01/javaSourceCode/java.util/ListIterator/" rel="next" title="java源码之ListIterator">
+                <i class="fa fa-chevron-left"></i> java源码之ListIterator
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/31/javaSourceCode/java.lang/IndexOutOfBoundsException/" rel="prev" title="java源码之IndexOutOfBoundsException">
-                java源码之IndexOutOfBoundsException <i class="fa fa-chevron-right"></i>
+              <a href="/2015/11/05/javaSourceCode/java.util/AbstractList/" rel="prev" title="java源码之AbstractList">
+                java源码之AbstractList <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -350,8 +350,8 @@
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/10/31/javaSourceCode/java.lang/Cloneable/"
-           data-title="java源码之Cloneable" data-url="http://jinpingwang.github.io/2015/10/31/javaSourceCode/java.lang/Cloneable/">
+      <div class="ds-thread" data-thread-key="2015/11/03/javaSourceCode/java.util/List/"
+           data-title="java源码之List" data-url="http://jinpingwang.github.io/2015/11/03/javaSourceCode/java.util/List/">
       </div>
     
   </div>
