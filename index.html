@@ -341,6 +341,967 @@
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/11/05/javaSourceCode/java.util/AbstractList/" itemprop="url">
+                  java源码之AbstractList
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-11-05T09:21:55+08:00" content="2015-11-05">
+              2015-11-05
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/java-util/" itemprop="url" rel="index">
+                    <span itemprop="name">java.util</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/11/05/javaSourceCode/java.util/AbstractList/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/05/javaSourceCode/java.util/AbstractList/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h3 id="u6E90_u4EE3_u7801"><a href="#u6E90_u4EE3_u7801" class="headerlink" title="源代码"></a>源代码</h3><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br><span class="line">426</span><br><span class="line">427</span><br><span class="line">428</span><br><span class="line">429</span><br><span class="line">430</span><br><span class="line">431</span><br><span class="line">432</span><br><span class="line">433</span><br><span class="line">434</span><br><span class="line">435</span><br><span class="line">436</span><br><span class="line">437</span><br><span class="line">438</span><br><span class="line">439</span><br><span class="line">440</span><br><span class="line">441</span><br><span class="line">442</span><br><span class="line">443</span><br><span class="line">444</span><br><span class="line">445</span><br><span class="line">446</span><br><span class="line">447</span><br><span class="line">448</span><br><span class="line">449</span><br><span class="line">450</span><br><span class="line">451</span><br><span class="line">452</span><br><span class="line">453</span><br><span class="line">454</span><br><span class="line">455</span><br><span class="line">456</span><br><span class="line">457</span><br><span class="line">458</span><br><span class="line">459</span><br><span class="line">460</span><br><span class="line">461</span><br><span class="line">462</span><br><span class="line">463</span><br><span class="line">464</span><br><span class="line">465</span><br><span class="line">466</span><br><span class="line">467</span><br><span class="line">468</span><br><span class="line">469</span><br><span class="line">470</span><br><span class="line">471</span><br><span class="line">472</span><br><span class="line">473</span><br><span class="line">474</span><br><span class="line">475</span><br><span class="line">476</span><br><span class="line">477</span><br><span class="line">478</span><br><span class="line">479</span><br><span class="line">480</span><br><span class="line">481</span><br><span class="line">482</span><br><span class="line">483</span><br><span class="line">484</span><br><span class="line">485</span><br><span class="line">486</span><br><span class="line">487</span><br><span class="line">488</span><br><span class="line">489</span><br><span class="line">490</span><br><span class="line">491</span><br><span class="line">492</span><br><span class="line">493</span><br><span class="line">494</span><br><span class="line">495</span><br><span class="line">496</span><br><span class="line">497</span><br><span class="line">498</span><br><span class="line">499</span><br><span class="line">500</span><br><span class="line">501</span><br><span class="line">502</span><br><span class="line">503</span><br><span class="line">504</span><br><span class="line">505</span><br><span class="line">506</span><br><span class="line">507</span><br><span class="line">508</span><br><span class="line">509</span><br><span class="line">510</span><br><span class="line">511</span><br><span class="line">512</span><br><span class="line">513</span><br><span class="line">514</span><br><span class="line">515</span><br><span class="line">516</span><br><span class="line">517</span><br><span class="line">518</span><br><span class="line">519</span><br><span class="line">520</span><br><span class="line">521</span><br><span class="line">522</span><br><span class="line">523</span><br><span class="line">524</span><br><span class="line">525</span><br><span class="line">526</span><br><span class="line">527</span><br><span class="line">528</span><br><span class="line">529</span><br><span class="line">530</span><br><span class="line">531</span><br><span class="line">532</span><br><span class="line">533</span><br><span class="line">534</span><br><span class="line">535</span><br><span class="line">536</span><br><span class="line">537</span><br><span class="line">538</span><br><span class="line">539</span><br><span class="line">540</span><br><span class="line">541</span><br><span class="line">542</span><br><span class="line">543</span><br><span class="line">544</span><br><span class="line">545</span><br><span class="line">546</span><br><span class="line">547</span><br><span class="line">548</span><br><span class="line">549</span><br><span class="line">550</span><br><span class="line">551</span><br><span class="line">552</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> java.util;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractList</span>&lt;<span class="title">E</span>&gt; <span class="keyword">extends</span> <span class="title">AbstractCollection</span>&lt;<span class="title">E</span>&gt; <span class="keyword">implements</span> <span class="title">List</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="title">AbstractList</span><span class="params">()</span></span>&#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span><br><span class="line">	 * Appends the specified element</span><br><span class="line">	 * to the end of this list</span><br><span class="line">	 */</span></span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span></span>&#123;</span><br><span class="line">		add(size(),e);</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//这个index位置是cursor的位置</span></span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> index,E element)</span></span>&#123;</span><br><span class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> UnsupportedOperationException();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">abstract</span> <span class="keyword">public</span> <span class="function">E <span class="title">get</span><span class="params">(<span class="keyword">int</span> index)</span></span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="function">E <span class="title">set</span><span class="params">(<span class="keyword">int</span> index,E element)</span></span>&#123;</span><br><span class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> UnsupportedOperationException();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="function">E <span class="title">remove</span><span class="params">(<span class="keyword">int</span> index)</span></span>&#123;</span><br><span class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> UnsupportedOperationException();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//从头往尾遍历，返回第一次出现这个元素的位置</span></span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">int</span> <span class="title">indexOf</span><span class="params">(Object o)</span></span>&#123;</span><br><span class="line">		ListIterator&lt;E&gt; it=listIterator();</span><br><span class="line">		<span class="keyword">if</span>(java.util.Objects.equals(o, <span class="keyword">null</span>))&#123;</span><br><span class="line">			<span class="keyword">while</span>(it.hasNext())&#123;</span><br><span class="line">				<span class="keyword">if</span>(java.util.Objects.equals(it.next(),<span class="keyword">null</span>))&#123;</span><br><span class="line">					<span class="function"><span class="keyword">return</span> it.<span class="title">previousIndex</span><span class="params">()</span></span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">while</span>(it.hasNext())&#123;</span><br><span class="line">				<span class="keyword">if</span>(it.next().equals(o))&#123;</span><br><span class="line">					<span class="function"><span class="keyword">return</span> it.<span class="title">previousIndex</span><span class="params">()</span></span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//从尾往头遍历，返回第一次出现这个元素的位置</span></span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">int</span> <span class="title">lastIndexOf</span><span class="params">(Object o)</span></span>&#123;</span><br><span class="line">		ListIterator&lt;E&gt; it=listIterator(size());</span><br><span class="line">		<span class="keyword">if</span>(java.util.Objects.equals(o, <span class="keyword">null</span>))&#123;</span><br><span class="line">			<span class="keyword">while</span>(it.hasPrevious())&#123;</span><br><span class="line">				<span class="keyword">if</span>(it.previous().equals(o))&#123;</span><br><span class="line">					<span class="function"><span class="keyword">return</span> it.<span class="title">previousIndex</span><span class="params">()</span></span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">while</span>(it.hasPrevious())&#123;</span><br><span class="line">				<span class="keyword">if</span>(it.previous().equals(o))&#123;</span><br><span class="line">					<span class="function"><span class="keyword">return</span> it.<span class="title">previousIndex</span><span class="params">()</span></span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span></span>&#123;</span><br><span class="line">		removeRange(<span class="number">0</span>,size());</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span><br><span class="line">     * <span class="doctag">@param</span> fromIndex index of first element to be removed</span><br><span class="line">     * <span class="doctag">@param</span> toIndex index after last element to be removed</span><br><span class="line">    */</span></span><br><span class="line">	<span class="keyword">protected</span> <span class="function"><span class="keyword">void</span> <span class="title">removeRange</span><span class="params">(<span class="keyword">int</span> fromIndex,<span class="keyword">int</span> toIndex)</span></span>&#123;</span><br><span class="line">		ListIterator&lt;E&gt; it=listIterator(fromIndex);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>,n=toIndex-fromIndex;i&lt;n;i++)&#123;</span><br><span class="line">			it.next();</span><br><span class="line">			it.remove();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//c这个元素报元素类型错误</span></span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">boolean</span> <span class="title">addAll</span><span class="params">(<span class="keyword">int</span> index,Collection&lt;? <span class="keyword">extends</span> E&gt; c)</span></span>&#123;</span><br><span class="line">		rangeCheckForAdd(index);</span><br><span class="line">		<span class="keyword">boolean</span> modified=<span class="keyword">false</span>;</span><br><span class="line">		<span class="keyword">for</span>(E e:c)&#123;</span><br><span class="line">			add(index++,e);</span><br><span class="line">			modified=<span class="keyword">true</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> modified;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> <span class="function"><span class="keyword">void</span> <span class="title">rangeCheckForAdd</span><span class="params">(<span class="keyword">int</span> index)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(index&lt;<span class="number">0</span>||index&gt;size())&#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> IndexOutOfBoundsException(outOfBoundsMsg(index));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> <span class="function">String <span class="title">outOfBoundsMsg</span><span class="params">(<span class="keyword">int</span> index)</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"Index: "</span>+index+<span class="string">", Size: "</span>+size();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> Iterator&lt;E&gt; iterator()&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> Itr();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> ListIterator&lt;E&gt; listIterator()&#123;</span><br><span class="line">		<span class="function"><span class="keyword">return</span> <span class="title">listIterator</span><span class="params">(<span class="number">0</span>)</span></span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> ListIterator&lt;E&gt; listIterator(<span class="keyword">final</span> <span class="keyword">int</span> index)&#123;</span><br><span class="line">		rangeCheckForAdd(index);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> ListItr(index);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">Itr</span> <span class="keyword">implements</span> <span class="title">Iterator</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="comment">//当前元素的位置</span></span><br><span class="line">		<span class="keyword">int</span> cursor=<span class="number">0</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// 记录是next()还是previous()</span></span><br><span class="line">		<span class="comment">// 实现以下注释的意思：</span></span><br><span class="line">		<span class="comment">// Note that the &#123;@link #remove&#125; and &#123;@link #set(Object)&#125; methods are</span></span><br><span class="line">		<span class="comment">// &lt;i&gt;not&lt;/i&gt; defined in terms of the cursor position;  they are defined to</span></span><br><span class="line">		<span class="comment">// operate on the last element returned by a call to &#123;@link #next&#125; or</span></span><br><span class="line">		<span class="comment">// &#123;@link #previous()&#125;.</span></span><br><span class="line">		<span class="keyword">int</span> lastRet=-<span class="number">1</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//是用于判断 list是否并发操作</span></span><br><span class="line">		<span class="comment">//问题是modCount的初值设置为0</span></span><br><span class="line">		<span class="comment">// expectedModCount的值等于modCount</span></span><br><span class="line">		<span class="comment">//怎么判断是否并发操作？modCount的值是在哪修改？</span></span><br><span class="line">		<span class="keyword">int</span> expectedModCount=modCount;</span><br><span class="line">		</span><br><span class="line">		<span class="annotation">@Override</span></span><br><span class="line">		<span class="keyword">public</span> <span class="function"><span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">			<span class="keyword">return</span> cursor!=size();</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="annotation">@Override</span></span><br><span class="line">		<span class="keyword">public</span> <span class="function">E <span class="title">next</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">			checkForComodification();</span><br><span class="line">			<span class="keyword">try</span>&#123;</span><br><span class="line">				<span class="keyword">int</span> i=cursor;</span><br><span class="line">				E next=get(i);</span><br><span class="line">				lastRet=i;</span><br><span class="line">				cursor=i+<span class="number">1</span>;</span><br><span class="line">				<span class="keyword">return</span> next;</span><br><span class="line">			&#125;<span class="keyword">catch</span>(IndexOutOfBoundsException e)&#123;</span><br><span class="line">				checkForComodification();</span><br><span class="line">				<span class="keyword">throw</span> <span class="keyword">new</span> NoSuchElementException();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">remove</span><span class="params">()</span></span>&#123;</span><br><span class="line">			<span class="keyword">if</span>(lastRet&lt;<span class="number">0</span>)&#123;</span><br><span class="line">				<span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException();</span><br><span class="line">			&#125;</span><br><span class="line">			checkForComodification();</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">try</span>&#123;</span><br><span class="line">				AbstractList.<span class="keyword">this</span>.remove(lastRet);</span><br><span class="line">				</span><br><span class="line">				<span class="comment">// 如果是previous()时，cursor不需要减1</span></span><br><span class="line">				<span class="comment">// 如果是next()时，cursor需要减1</span></span><br><span class="line">				<span class="keyword">if</span>(lastRet&lt;cursor)&#123;</span><br><span class="line">					cursor--;</span><br><span class="line">				&#125;</span><br><span class="line">				</span><br><span class="line">				<span class="comment">//将lastRet设置为-1</span></span><br><span class="line">				<span class="comment">//则之后Iterator不能再紧接着调用remove与set</span></span><br><span class="line">				lastRet=-<span class="number">1</span>;</span><br><span class="line">				expectedModCount=modCount;</span><br><span class="line">			&#125;<span class="keyword">catch</span>(IndexOutOfBoundsException e)&#123;</span><br><span class="line">				<span class="keyword">throw</span> <span class="keyword">new</span> ConcurrentModificationException();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">final</span> <span class="function"><span class="keyword">void</span> <span class="title">checkForComodification</span><span class="params">()</span></span>&#123;</span><br><span class="line">			<span class="keyword">if</span>(modCount!=expectedModCount)&#123;</span><br><span class="line">				<span class="keyword">throw</span> <span class="keyword">new</span> ConcurrentModificationException();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ListItr</span> <span class="keyword">extends</span> <span class="title">Itr</span> <span class="keyword">implements</span> <span class="title">ListIterator</span>&lt;<span class="title">E</span>&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">		ListItr(<span class="keyword">int</span> index)&#123;</span><br><span class="line">			cursor=index;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="annotation">@Override</span></span><br><span class="line">		<span class="keyword">public</span> <span class="function"><span class="keyword">boolean</span> <span class="title">hasPrevious</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">			<span class="keyword">return</span> cursor!=<span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="annotation">@Override</span></span><br><span class="line">		<span class="keyword">public</span> <span class="function">E <span class="title">previous</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">			checkForComodification();</span><br><span class="line">			<span class="keyword">try</span>&#123;</span><br><span class="line">				<span class="keyword">int</span> i=cursor-<span class="number">1</span>;</span><br><span class="line">				E previous=get(i);</span><br><span class="line">				lastRet=cursor=i;</span><br><span class="line">				<span class="keyword">return</span> previous;</span><br><span class="line">			&#125;<span class="keyword">catch</span>(IndexOutOfBoundsException e)&#123;</span><br><span class="line">				checkForComodification();</span><br><span class="line">				<span class="keyword">throw</span> <span class="keyword">new</span> NoSuchElementException();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//这里没有进行越界处理</span></span><br><span class="line">		<span class="comment">//比如有5个元素，初始位置为5，则cursor</span></span><br><span class="line">		<span class="comment">//的值为5，返回的是5。但5的位置并没有元素</span></span><br><span class="line">		<span class="annotation">@Override</span></span><br><span class="line">		<span class="keyword">public</span> <span class="function"><span class="keyword">int</span> <span class="title">nextIndex</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">			<span class="keyword">return</span> cursor;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="annotation">@Override</span></span><br><span class="line">		<span class="keyword">public</span> <span class="function"><span class="keyword">int</span> <span class="title">previousIndex</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">			<span class="keyword">return</span> cursor-<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="annotation">@Override</span></span><br><span class="line">		<span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">set</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">			<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">			<span class="keyword">if</span>(lastRet&lt;<span class="number">0</span>)&#123;</span><br><span class="line">				<span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException();</span><br><span class="line">			&#125;</span><br><span class="line">			checkForComodification();</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">try</span>&#123;</span><br><span class="line">				AbstractList.<span class="keyword">this</span>.set(lastRet, e);</span><br><span class="line">				expectedModCount=modCount;</span><br><span class="line">			&#125;<span class="keyword">catch</span>(IndexOutOfBoundsException ex)&#123;</span><br><span class="line">				<span class="keyword">throw</span> <span class="keyword">new</span> ConcurrentModificationException();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="annotation">@Override</span></span><br><span class="line">		<span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">			<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">			checkForComodification();</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">try</span>&#123;</span><br><span class="line">				<span class="keyword">int</span> i=cursor;</span><br><span class="line">				AbstractList.<span class="keyword">this</span>.add(i,e);</span><br><span class="line">				lastRet=-<span class="number">1</span>;</span><br><span class="line">				cursor=i+<span class="number">1</span>;</span><br><span class="line">				expectedModCount=modCount;</span><br><span class="line">			&#125;<span class="keyword">catch</span>(IndexOutOfBoundsException ex)&#123;</span><br><span class="line">				<span class="keyword">throw</span> <span class="keyword">new</span> ConcurrentModificationException();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">protected</span> <span class="keyword">transient</span> <span class="keyword">int</span> modCount = <span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object o)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(o==<span class="keyword">this</span>)&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(!(o <span class="keyword">instanceof</span> List))&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		ListIterator&lt;E&gt; e1=listIterator();</span><br><span class="line">		ListIterator&lt;?&gt; e2=((List&lt;?&gt;) o).listIterator();</span><br><span class="line">		<span class="keyword">while</span>(e1.hasNext()&amp;&amp;e2.hasNext())&#123;</span><br><span class="line">			E o1=e1.next();</span><br><span class="line">			Object o2=e2.next();</span><br><span class="line">			<span class="keyword">if</span>(!(o1==<span class="keyword">null</span>?o2==<span class="keyword">null</span>:o1.equals(o2)))&#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> !(e1.hasNext() || e2.hasNext());</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//报错：Type mismatch: cannot convert from </span></span><br><span class="line">	<span class="comment">//element type Object to E</span></span><br><span class="line">	<span class="comment">//但源码不会报错</span></span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> hashCode=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span>(E e : <span class="keyword">this</span>)&#123;</span><br><span class="line">			hashCode=<span class="number">31</span>*hashCode+(e==<span class="keyword">null</span>?<span class="number">0</span>:e.hashCode());</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> hashCode;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">    <span class="keyword">public</span> List&lt;E&gt; subList(<span class="keyword">int</span> fromIndex, <span class="keyword">int</span> toIndex) &#123;</span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">this</span> <span class="keyword">instanceof</span> RandomAccess ?</span><br><span class="line">                <span class="keyword">new</span> RandomAccessSubList&lt;&gt;(<span class="keyword">this</span>, fromIndex, toIndex) :</span><br><span class="line">                <span class="keyword">new</span> SubList&lt;&gt;(<span class="keyword">this</span>, fromIndex, toIndex));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//这里面的modCount是继承来的modCount与从参数中的list对象的modCount进行比对</span></span><br><span class="line"><span class="comment">//而AbstractList中的Itr类里面是自己定义了一个expectedModCount与类中的modCount进行比对</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SubList</span>&lt;<span class="title">E</span>&gt; <span class="keyword">extends</span> <span class="title">AbstractList</span>&lt;<span class="title">E</span>&gt;</span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> AbstractList&lt;E&gt; l;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> offset;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> size;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span><br><span class="line">	 * [fromIndex,toIndex)是一个前闭后开的区间</span><br><span class="line">	 */</span></span><br><span class="line">	SubList(AbstractList&lt;E&gt; list,<span class="keyword">int</span> fromIndex,<span class="keyword">int</span> toIndex)&#123;</span><br><span class="line">		<span class="keyword">if</span>(fromIndex &lt; <span class="number">0</span>)&#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> IndexOutOfBoundsException(<span class="string">"fromIndex = "</span>+fromIndex);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(toIndex&gt;list.size())&#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> IndexOutOfBoundsException(<span class="string">"toIndex = "</span>+toIndex);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(fromIndex&gt;toIndex)&#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"fromIndex("</span>+fromIndex+</span><br><span class="line">															<span class="string">") &gt; toIndex("</span>+toIndex+<span class="string">")"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		l=list;</span><br><span class="line">		offset=fromIndex;</span><br><span class="line">		size=toIndex-fromIndex;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//从这里可知，subList修改了结构，其parent也相应的修改了modCount</span></span><br><span class="line">		<span class="comment">//所以等children进行add()操作后，parent进行add()操作不会报错</span></span><br><span class="line">		<span class="comment">//但反过parent进行add()操作后，children再进行add()操作就会报错</span></span><br><span class="line">		<span class="keyword">this</span>.modCount=l.modCount;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="function"><span class="keyword">void</span> <span class="title">rangeCheck</span><span class="params">(<span class="keyword">int</span> index)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(index&lt;<span class="number">0</span> || index&gt;=size)&#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> IndexOutOfBoundsException(outOfBoundsMsg(index));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> <span class="function"><span class="keyword">void</span> <span class="title">rangeCheckForAdd</span><span class="params">(<span class="keyword">int</span> index)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(index&lt;<span class="number">0</span>||index&gt;size)&#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> IndexOutOfBoundsException(outOfBoundsMsg(index));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> <span class="function">String <span class="title">outOfBoundsMsg</span><span class="params">(<span class="keyword">int</span> index)</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"Index: "</span>+index+<span class="string">", Size: "</span>+size;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> <span class="function"><span class="keyword">void</span> <span class="title">checkForComodification</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(<span class="keyword">this</span>.modCount!=l.modCount)&#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> ConcurrentModificationException();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="function">E <span class="title">set</span><span class="params">(<span class="keyword">int</span> index,E element)</span></span>&#123;</span><br><span class="line">		rangeCheck(index);</span><br><span class="line">		checkForComodification();</span><br><span class="line">		<span class="function"><span class="keyword">return</span> l.<span class="title">set</span><span class="params">(index+offset, element)</span></span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="function">E <span class="title">get</span><span class="params">(<span class="keyword">int</span> index)</span></span>&#123;</span><br><span class="line">		rangeCheck(index);</span><br><span class="line">		checkForComodification();</span><br><span class="line">		<span class="function"><span class="keyword">return</span> l.<span class="title">get</span><span class="params">(index+offset)</span></span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">int</span> <span class="title">size</span><span class="params">()</span></span>&#123;</span><br><span class="line">		checkForComodification();</span><br><span class="line">		<span class="keyword">return</span> size;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> index,E element)</span></span>&#123;</span><br><span class="line">		rangeCheckForAdd(index);</span><br><span class="line">		checkForComodification();</span><br><span class="line">		l.add(index+offset,element);</span><br><span class="line">		<span class="keyword">this</span>.modCount=l.modCount;</span><br><span class="line">		size++;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="function">E <span class="title">remove</span><span class="params">(<span class="keyword">int</span> index)</span></span>&#123;</span><br><span class="line">		rangeCheck(index);</span><br><span class="line">		checkForComodification();</span><br><span class="line">		E result=l.remove(index+offset);</span><br><span class="line">		<span class="keyword">this</span>.modCount=l.modCount;</span><br><span class="line">		size--;</span><br><span class="line">		<span class="keyword">return</span> result;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//这里没进行rangeCheck(int index)是因为这是一个protected函数</span></span><br><span class="line">	<span class="keyword">protected</span> <span class="function"><span class="keyword">void</span> <span class="title">removeRange</span><span class="params">(<span class="keyword">int</span> fromIndex,<span class="keyword">int</span> toIndex)</span></span>&#123;</span><br><span class="line">		checkForComodification();</span><br><span class="line">		l.removeRange(fromIndex+offset, toIndex+offset);</span><br><span class="line">		<span class="keyword">this</span>.modCount=l.modCount;</span><br><span class="line">		size-=toIndex-fromIndex;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">boolean</span> <span class="title">addAll</span><span class="params">(Collection&lt;? <span class="keyword">extends</span> E&gt; c)</span></span>&#123;</span><br><span class="line">		<span class="function"><span class="keyword">return</span> <span class="title">addAll</span><span class="params">(size,c)</span></span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">boolean</span> <span class="title">addAll</span><span class="params">(<span class="keyword">int</span> index,Collection&lt;? <span class="keyword">extends</span> E&gt; c)</span></span>&#123;</span><br><span class="line">		rangeCheckForAdd(index);</span><br><span class="line">		<span class="keyword">int</span> cSize=c.size();</span><br><span class="line">		<span class="keyword">if</span>(cSize==<span class="number">0</span>)&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		checkForComodification();</span><br><span class="line">		l.addAll(index+offset,c);</span><br><span class="line">		<span class="keyword">this</span>.modCount=l.modCount;</span><br><span class="line">		size+=cSize;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span><br><span class="line">	 * 调用的是AbstractList中的listIterator方法</span><br><span class="line">	 * 但因为SubList是继承AbstractList，即SubList</span><br><span class="line">	 * 重写了listIterator(final int index)方法，所以，</span><br><span class="line">	 * 当listIterator方法调用listIterator(final int index)</span><br><span class="line">	 * 调用的是SubList中的listIterator(final int index)</span><br><span class="line">	 * 而不是AbstractList中的那个listIterator(final int index)</span><br><span class="line">	 */</span></span><br><span class="line">	<span class="keyword">public</span> Iterator&lt;E&gt; iterator()&#123;</span><br><span class="line">		<span class="function"><span class="keyword">return</span> <span class="title">listIterator</span><span class="params">()</span></span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> ListIterator&lt;E&gt; listIterator(<span class="keyword">final</span> <span class="keyword">int</span> index)&#123;</span><br><span class="line">		checkForComodification();</span><br><span class="line">		rangeCheckForAdd(index);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> ListIterator&lt;E&gt;()&#123;</span><br><span class="line">			<span class="keyword">private</span> <span class="keyword">final</span> ListIterator&lt;E&gt; i=l.listIterator(index+offset);</span><br><span class="line">			</span><br><span class="line">			<span class="annotation">@Override</span></span><br><span class="line">			<span class="keyword">public</span> <span class="function"><span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">				<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">				<span class="keyword">return</span> nextIndex()&lt;size;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="annotation">@Override</span></span><br><span class="line">			<span class="keyword">public</span> <span class="function">E <span class="title">next</span><span class="params">()</span> </span>&#123;</span><br><span class="line">				<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">				<span class="keyword">if</span>(hasNext())&#123;</span><br><span class="line">					<span class="function"><span class="keyword">return</span> i.<span class="title">next</span><span class="params">()</span></span>;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span>&#123;</span><br><span class="line">					<span class="keyword">throw</span> <span class="keyword">new</span> NoSuchElementException();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			<span class="annotation">@Override</span></span><br><span class="line">			<span class="keyword">public</span> <span class="function"><span class="keyword">boolean</span> <span class="title">hasPrevious</span><span class="params">()</span> </span>&#123;</span><br><span class="line">				<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">				<span class="keyword">return</span> previousIndex()&gt;=<span class="number">0</span>;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			<span class="annotation">@Override</span></span><br><span class="line">			<span class="keyword">public</span> <span class="function">E <span class="title">previous</span><span class="params">()</span> </span>&#123;</span><br><span class="line">				<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">				<span class="keyword">if</span>(hasPrevious())&#123;</span><br><span class="line">					<span class="function"><span class="keyword">return</span> i.<span class="title">previous</span><span class="params">()</span></span>;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span>&#123;</span><br><span class="line">					<span class="keyword">throw</span> <span class="keyword">new</span> NoSuchElementException();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			<span class="annotation">@Override</span></span><br><span class="line">			<span class="keyword">public</span> <span class="function"><span class="keyword">int</span> <span class="title">nextIndex</span><span class="params">()</span> </span>&#123;</span><br><span class="line">				<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">				<span class="keyword">return</span> i.nextIndex()-offset;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			<span class="annotation">@Override</span></span><br><span class="line">			<span class="keyword">public</span> <span class="function"><span class="keyword">int</span> <span class="title">previousIndex</span><span class="params">()</span> </span>&#123;</span><br><span class="line">				<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">				<span class="keyword">return</span> i.previousIndex()-offset;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			<span class="annotation">@Override</span></span><br><span class="line">			<span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">remove</span><span class="params">()</span> </span>&#123;</span><br><span class="line">				<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">				i.remove();</span><br><span class="line">				SubList.<span class="keyword">this</span>.modCount=l.modCount;</span><br><span class="line">				size--;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			<span class="annotation">@Override</span></span><br><span class="line">			<span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">set</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">				<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">				i.set(e);</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			<span class="annotation">@Override</span></span><br><span class="line">			<span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">				<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">				i.add(e);</span><br><span class="line">				SubList.<span class="keyword">this</span>.modCount=l.modCount;</span><br><span class="line">				size++;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> List&lt;E&gt; subList(<span class="keyword">int</span> fromIndex,<span class="keyword">int</span> toIndex)&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> SubList&lt;&gt;(<span class="keyword">this</span>,fromIndex,toIndex);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span><br><span class="line">	 * 源码中没有这两个方法，但写这个源码时却提示要实现</span><br><span class="line">	 * 可在AbstractCollection中已经实现了</span><br><span class="line">	 * <span class="doctag">@param</span> o</span><br><span class="line">	 * <span class="doctag">@return</span></span><br><span class="line">	 */</span></span><br><span class="line">	<span class="annotation">@Override</span></span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(Objects o)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> UnsupportedOperationException();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span><br><span class="line">	 * 源码中没有这两个方法，但写这个源码时却提示要实现</span><br><span class="line">	 * 可在AbstractCollection中已经实现了</span><br><span class="line">	 * <span class="doctag">@param</span> o</span><br><span class="line">	 * <span class="doctag">@return</span></span><br><span class="line">	 */</span></span><br><span class="line">	<span class="annotation">@Override</span></span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">boolean</span> <span class="title">retrainAll</span><span class="params">(Collection&lt;?&gt; c)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> UnsupportedOperationException();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RandomAccessSubList</span>&lt;<span class="title">E</span>&gt; <span class="keyword">extends</span> <span class="title">SubList</span>&lt;<span class="title">E</span>&gt; <span class="keyword">implements</span> <span class="title">RandomAccess</span></span>&#123;</span><br><span class="line">	RandomAccessSubList(AbstractList&lt;E&gt; list,<span class="keyword">int</span> fromIndex,<span class="keyword">int</span> toIndex)&#123;</span><br><span class="line">		<span class="keyword">super</span>(list,fromIndex,toIndex);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> List&lt;E&gt; subList(<span class="keyword">int</span> fromIndex,<span class="keyword">int</span> toIndex)&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> RandomAccessSubList&lt;&gt;(<span class="keyword">this</span>,fromIndex,toIndex);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="u5256_u6790"><a href="#u5256_u6790" class="headerlink" title="剖析"></a>剖析</h3><h4 id="u6982_u89C8"><a href="#u6982_u89C8" class="headerlink" title="概览"></a>概览</h4><p>这里面有五个块：</p>
+<ol>
+<li>抽象类<code>AbstractList</code></li>
+<li>抽象类<code>AbstractList</code>中的内部私有类<code>Itr</code></li>
+<li>抽象类<code>AbstractList</code>中的内部私有类<code>ListItr</code></li>
+<li><code>SubList</code>类</li>
+<li><code>RandomAccessSubList</code>类</li>
+</ol>
+<h4 id="AbstractList"><a href="#AbstractList" class="headerlink" title="AbstractList"></a>AbstractList</h4><h5 id="u65B9_u6CD5"><a href="#u65B9_u6CD5" class="headerlink" title="方法"></a>方法</h5><p>里面基本的方法是:</p>
+<ol>
+<li><code>add(int index,E element)</code></li>
+<li><code>get(int index)</code></li>
+<li><code>set(int index,E element)</code></li>
+<li><code>remove(int index)</code></li>
+<li>实现接口List中的<code>remove(Object o)</code><br>这五个方法要么是抽象方法，要么是抛出未支持操作异常。<br>其它剩余方法的基本上都是基于这几个方法实现的。<h5 id="u53D8_u91CF"><a href="#u53D8_u91CF" class="headerlink" title="变量"></a>变量</h5>里面最重要的一个变量成员：<code>modCount</code><br>所有关于会<code>structurally modified</code>的操作都会修改这个值。比如<code>add,remove</code>方法。其它方法没有修改<code>modCount</code>，是因为这些方法都是基于<code>add,remove</code>方法的。因此，调用这些方法时，自然会在<code>add,remove</code>中修改<code>modCount</code>。</li>
+</ol>
+<h4 id="Itr"><a href="#Itr" class="headerlink" title="Itr"></a>Itr</h4><h5 id="u65B9_u6CD5-1"><a href="#u65B9_u6CD5-1" class="headerlink" title="方法"></a>方法</h5><p>继承<code>Iterator</code>接口，并对它进行重写。另外增加了一个<code>checkForComodification()</code>，用于判断<code>modCount</code>的值的变化。重写<code>Iterator</code>中的那几个函数，实质调用的还是<code>AbstractList</code>中的方法，只不过是加了一些条件控制而已。</p>
+<h5 id="u53D8_u91CF-1"><a href="#u53D8_u91CF-1" class="headerlink" title="变量"></a>变量</h5><p><code>cursor</code>：这个是游标的位置。设置为0，说明每次调用时都是从0位置开始的。这样，各个迭代器之间其实是相互独立的。<br><code>lastRet</code>：是指上一次访问过元素的位置。在Itr中的用途仅是作为访问上一个元素的标志，在ListItr就可以看出”上一个元素”有另外的意思<br><code>expectedModCount</code>：用于记录该游标的修改值。如果仅仅只是当前这个迭代器对结构进行修改，修改完后，会将AbstractList的modCount重新赋给expectedModCount，所以二者值是相同。如果其它迭代器或AbstractList对结构 进行了修改，则当前这个迭代器就会失效（modCount与expectedModCount不相同）。</p>
+<h4 id="ListItr"><a href="#ListItr" class="headerlink" title="ListItr"></a>ListItr</h4><p>ListItr是继承Itr的，因此继承了Itr中的方法和成员变量。在Itr中lastRet是用来记录上一次访问过的元素的位置。由于在ListItr中有next()方法与previous()方法，因此，对应的上一个元素也就有了另一层意思。所以，在调用set与add方法时，操作的也是上一个元素的位置，就是由lastRet来定的。<br>另外，ListItr是支持指定位置操作，在初始化时指定一个位置，不像Itr中只能默认是从0位置开始。</p>
+<h4 id="SubList"><a href="#SubList" class="headerlink" title="SubList"></a>SubList</h4><h5 id="u65B9_u6CD5-2"><a href="#u65B9_u6CD5-2" class="headerlink" title="方法"></a>方法</h5><p>里面的方法其实调用的都是AbstractList中的方法，只不过添加了控制条件而已。</p>
+<h5 id="u53D8_u91CF-2"><a href="#u53D8_u91CF-2" class="headerlink" title="变量"></a>变量</h5><p><code>offset</code>：即设置为构造函数参数中的fromIndex，也就是该子链表的起始位置<br><code>size</code>：初始值设置为构造函数参数中toIndex-fromIndex，后面对链表结构进行修改时，这个值也会随着变化。<br><code>l</code>：设置为构造函数参数中的list。由于有这个引用，相当于递归的操作。比如，多次调用链表的subList方法时，在最后一个链表上的操作，会依次的往回调用上一层的方法，直到祖先那一层。</p>
+<h4 id="RandomAccessSubList"><a href="#RandomAccessSubList" class="headerlink" title="RandomAccessSubList"></a>RandomAccessSubList</h4><p>该类比较简单，继承于SubList，并且实现了RandomAccess接口。</p>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/11/03/javaSourceCode/java.util/List/" itemprop="url">
+                  java源码之List
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-11-03T15:43:28+08:00" content="2015-11-03">
+              2015-11-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/java-util/" itemprop="url" rel="index">
+                    <span itemprop="name">java.util</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/11/03/javaSourceCode/java.util/List/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/03/javaSourceCode/java.util/List/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h3 id="u6E90_u4EE3_u7801"><a href="#u6E90_u4EE3_u7801" class="headerlink" title="源代码"></a>源代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> java.util;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">List</span>&lt;<span class="title">E</span>&gt; <span class="keyword">extends</span> <span class="title">Collection</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line">	<span class="comment">/**</span><br><span class="line">	 * 1:allow duplicate elements</span><br><span class="line">	 * 2:allow null elements</span><br><span class="line">	 * 3:Lists(like Java arrays) are zero based</span><br><span class="line">	 */</span></span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">size</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(Objects o)</span></span>;</span><br><span class="line">	<span class="function">Iterator&lt;E&gt; <span class="title">iterator</span><span class="params">()</span></span>;</span><br><span class="line">	Object[] toArray();</span><br><span class="line">	&lt;T&gt; T[] toArray(T[] a);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//虽然List继承了Collection，而且Collection中也有</span></span><br><span class="line">	<span class="comment">//boolean add(E e)</span></span><br><span class="line">	<span class="comment">//但Collection中的add是只保证添加，但插入哪个位置不定</span></span><br><span class="line">	<span class="comment">//List中的add是规定只能插到最后一个位置</span></span><br><span class="line">	<span class="function"><span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">boolean</span> <span class="title">remove</span><span class="params">(Object o)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">boolean</span> <span class="title">containsAll</span><span class="params">(Collection&lt;?&gt; c)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">boolean</span> <span class="title">addAll</span><span class="params">(Collection&lt;? extends E&gt; c)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">boolean</span> <span class="title">removeAll</span><span class="params">(Collection&lt;?&gt; c)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">boolean</span> <span class="title">retainAll</span><span class="params">(Collection&lt;?&gt; c)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object o)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span></span>;</span><br><span class="line">		</span><br><span class="line">	<span class="function"><span class="keyword">boolean</span> <span class="title">addAll</span><span class="params">(<span class="keyword">int</span> index,Collection&lt;? extends E&gt; c)</span></span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//index当做是元素的位置，不当成cursor，</span></span><br><span class="line">	<span class="comment">//会比较好理解</span></span><br><span class="line">	<span class="comment">//index : [0,size())</span></span><br><span class="line">	<span class="function">E <span class="title">get</span><span class="params">(<span class="keyword">int</span> index)</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//index当做是元素的元素，不当成cursor，</span></span><br><span class="line">	<span class="comment">//会比较好理解</span></span><br><span class="line">	<span class="comment">//index : [0,size())</span></span><br><span class="line">	<span class="function">E <span class="title">set</span><span class="params">(<span class="keyword">int</span> index, E element)</span></span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//在指定位置插入元素，这个位置是[0,size()]之间</span></span><br><span class="line">	<span class="comment">//插入后，后面原先的元素都往后移一位</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> index,E element)</span></span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//删除指定位置的元素，[0,size())</span></span><br><span class="line">	<span class="function">E <span class="title">remove</span><span class="params">(<span class="keyword">int</span> index)</span></span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//查看Object o这个元素第一次出现的位置，[0,size())</span></span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">indexOf</span><span class="params">(Object o)</span></span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//查看Object o这个元素最一一次出现的位置，[0,size())</span></span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">lastIndexOf</span><span class="params">(Object o)</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//用的时用空间换取时间，先转换成数组进行排序</span></span><br><span class="line">	<span class="comment">//然后再用排序好的值来替换原来的值</span></span><br><span class="line">	<span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(Comparator&lt;? <span class="keyword">super</span> E&gt; c)</span></span>&#123;</span><br><span class="line">		Object[] a=<span class="keyword">this</span>.toArray();</span><br><span class="line">		Arrays.sort(a,(Comparator) c);</span><br><span class="line">		ListIterator&lt;E&gt; i=<span class="keyword">this</span>.listIterator();</span><br><span class="line">		<span class="keyword">for</span>(Object e:a)&#123;</span><br><span class="line">			i.next();</span><br><span class="line">			i.set((E)e);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//返回相当于头结点，next()即获得第一个结点</span></span><br><span class="line">	<span class="function">ListIterator&lt;E&gt; <span class="title">listIterator</span><span class="params">()</span></span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//返回指定点位置的前一个结点。</span></span><br><span class="line">	<span class="comment">//有3个元素，则index的值为[0,3]</span></span><br><span class="line">	<span class="comment">//listIterator(1)，则的位置为第一个元素与第二个元素之间</span></span><br><span class="line">	<span class="function">ListIterator&lt;E&gt; <span class="title">listIterator</span><span class="params">(<span class="keyword">int</span> index)</span></span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span><br><span class="line">	 * Returns a view of the portion of this list </span><br><span class="line">	 * between the specified&lt;tt&gt;fromIndex&lt;/tt&gt;, inclusive,</span><br><span class="line">	 * and &lt;tt&gt;toIndex&lt;/tt&gt;, exclusive. </span><br><span class="line">	 * 即[fromIndex,toIndex)			</span><br><span class="line">	 */</span></span><br><span class="line">	<span class="function">List&lt;E&gt; <span class="title">subList</span><span class="params">(<span class="keyword">int</span> fromIndex,<span class="keyword">int</span> toIndex)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="u5256_u6790"><a href="#u5256_u6790" class="headerlink" title="剖析"></a>剖析</h3><p>这个接口是继承于Collection接口，元素是有序的，可以对指定位置进行操作。<br>另外要注意一点的是：此接口中的add方法与Collection中的add方法不一样，如上述源代码所说。</p>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/11/01/javaSourceCode/java.util/ListIterator/" itemprop="url">
+                  java源码之ListIterator
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-11-01T21:21:34+08:00" content="2015-11-01">
+              2015-11-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/java-util/" itemprop="url" rel="index">
+                    <span itemprop="name">java.util</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/11/01/javaSourceCode/java.util/ListIterator/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/01/javaSourceCode/java.util/ListIterator/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h3 id="u6E90_u4EE3_u7801"><a href="#u6E90_u4EE3_u7801" class="headerlink" title="源代码"></a>源代码</h3><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line">package java.util;</span><br><span class="line"></span><br><span class="line">/<span class="keyword">*</span><span class="keyword">*</span></span><br><span class="line"> <span class="keyword">*</span> A &#123;<span class="comment">@code ListIterator&#125;</span></span><br><span class="line"> <span class="keyword">*</span> has no current element; its <span class="variable">&lt;I&gt;</span>cursor position<span class="variable">&lt;/I&gt;</span> always</span><br><span class="line"> <span class="keyword">*</span> lies between the element that would be returned by a call</span><br><span class="line"> <span class="keyword">*</span> to &#123;<span class="comment">@code previous()&#125; and the element that would be</span></span><br><span class="line"> <span class="keyword">*</span> returned by a call to &#123;<span class="comment">@code next()&#125;.</span></span><br><span class="line"> <span class="keyword">*</span></span><br><span class="line"> <span class="keyword">*</span>An iterator for a list of length &#123;<span class="comment">@code n&#125; has &#123;@code n+1&#125; possible</span></span><br><span class="line"> <span class="keyword">*</span> cursor positions, as illustrated by the carets (&#123;<span class="comment">@code ^&#125;) below:</span></span><br><span class="line"> <span class="keyword">*</span> <span class="variable">&lt;PRE&gt;</span></span><br><span class="line"> <span class="keyword">*</span>                      Element(0)   Element(1)   Element(2)   ... Element(n-1)</span><br><span class="line"> <span class="keyword">*</span> cursor positions:  ^            ^            ^            ^                  ^</span><br><span class="line"> <span class="keyword">*</span> <span class="variable">&lt;/PRE&gt;</span></span><br><span class="line"> <span class="keyword">*</span></span><br><span class="line"> <span class="keyword">*</span>这一句话没看懂：</span><br><span class="line"> <span class="keyword">*</span>Note that the &#123;<span class="comment">@link #remove&#125; and &#123;@link #set(Object)&#125; methods are</span></span><br><span class="line"> <span class="keyword">*</span> <span class="variable">&lt;i&gt;</span>not<span class="variable">&lt;/i&gt;</span> defined in terms of the cursor position;  they are defined to</span><br><span class="line"> <span class="keyword">*</span> operate on the last element returned by a call to &#123;<span class="comment">@link #next&#125; or</span></span><br><span class="line"> <span class="keyword">*</span> &#123;<span class="comment">@link #previous()&#125;.</span></span><br><span class="line"> <span class="keyword">*</span> </span><br><span class="line"> <span class="keyword">*</span> 2015-11-6解释：</span><br><span class="line"> <span class="keyword">*</span>  ArrayList als=new ArrayList();</span><br><span class="line">	als.add(<span class="string">"hello"</span>);</span><br><span class="line">	als.add(<span class="string">"world"</span>);</span><br><span class="line">	ListIterator<span class="variable">&lt;String&gt;</span> lis=als.listIterator();</span><br><span class="line">	lis.next();</span><br><span class="line">	lis.remove();</span><br><span class="line">	则删除的是hello;</span><br><span class="line">	</span><br><span class="line">	ArrayList als=new ArrayList();</span><br><span class="line">	als.add(<span class="string">"hello"</span>);</span><br><span class="line">	als.add(<span class="string">"world"</span>);</span><br><span class="line">	ListIterator<span class="variable">&lt;String&gt;</span> lis=als.listIterator();</span><br><span class="line">	lis.next();</span><br><span class="line">	lis.next();</span><br><span class="line">	lis.previous();</span><br><span class="line">	lis.remove();</span><br><span class="line">	则删除的是world;</span><br><span class="line"> <span class="keyword">*</span></span><br><span class="line"> <span class="keyword">*</span>/</span><br><span class="line">public interface ListIterator<span class="variable">&lt;E&gt;</span> extends Iterator<span class="variable">&lt;E&gt;</span> &#123;</span><br><span class="line">	boolean hasNext();</span><br><span class="line">	</span><br><span class="line">	//cursor往后移一步</span><br><span class="line">	E next();</span><br><span class="line">	</span><br><span class="line">	boolean hasPrevious();</span><br><span class="line">	</span><br><span class="line">	//cursor往前移一步</span><br><span class="line">	E previous();</span><br><span class="line">	</span><br><span class="line">	/<span class="keyword">*</span><span class="keyword">*</span></span><br><span class="line">	 <span class="keyword">*</span> 					  Element(0)   Element(1)   Element(2)   ... Element(n-1)</span><br><span class="line">	 <span class="keyword">*</span> cursor positions: ^           ^            ^            ^ </span><br><span class="line">	 <span class="keyword">*</span>如果cursor介于Element(0)与Element(1)之间</span><br><span class="line">	 <span class="keyword">*</span>则函数返回的就是Element(1)的位置</span><br><span class="line">	 <span class="keyword">*</span>/</span><br><span class="line">	int nextIndex();</span><br><span class="line">	</span><br><span class="line">	/<span class="keyword">*</span><span class="keyword">*</span></span><br><span class="line">	 <span class="keyword">*</span> 					  Element(0)   Element(1)   Element(2)   ... Element(n-1)</span><br><span class="line">	 <span class="keyword">*</span> cursor positions: ^           ^            ^            ^ </span><br><span class="line">	 <span class="keyword">*</span>如果cursor介于Element(0)与Element(1)之间</span><br><span class="line">	 <span class="keyword">*</span>则函数返回的就是Element(0)的位置</span><br><span class="line">	 <span class="keyword">*</span>/</span><br><span class="line">	int previousIndex();</span><br><span class="line">	</span><br><span class="line">	/<span class="keyword">*</span><span class="keyword">*</span></span><br><span class="line">	 <span class="keyword">*</span> 					  Element(0)   Element(1)   Element(2)   ... Element(n-1)</span><br><span class="line">	 <span class="keyword">*</span> cursor positions: ^           ^            ^            ^ </span><br><span class="line">	 <span class="keyword">*</span>如果cursor介于Element(0)与Element(1)之间，并且最近一次访问的是next()</span><br><span class="line">	 <span class="keyword">*</span>则函数移除的就是Element(0)这个元素</span><br><span class="line">	 <span class="keyword">*</span>/</span><br><span class="line">	void remove();</span><br><span class="line"></span><br><span class="line">	/<span class="keyword">*</span><span class="keyword">*</span></span><br><span class="line">	 <span class="keyword">*</span> Replaces the last element returned by &#123;<span class="comment">@link #next&#125; or</span></span><br><span class="line">     <span class="keyword">*</span> &#123;<span class="comment">@link #previous&#125; with the specified element (optional operation).</span></span><br><span class="line">     <span class="keyword">*</span> 具体对哪个元素进行更改，需根据上一次访问的是next()还是previous()来定，同remove函数</span><br><span class="line">	 <span class="keyword">*</span> <span class="comment">@param e</span></span><br><span class="line">	 <span class="keyword">*</span>/</span><br><span class="line">	void set(E e);</span><br><span class="line">	</span><br><span class="line">	/<span class="keyword">*</span><span class="keyword">*</span></span><br><span class="line">	 <span class="keyword">*</span> 					  Element(0)   Element(1)   Element(2)   ... Element(n-1)</span><br><span class="line">	 <span class="keyword">*</span> cursor positions: ^           ^            ^            ^ </span><br><span class="line">	 <span class="keyword">*</span>如果cursor介于Element(0)与Element(1)之间</span><br><span class="line">	 <span class="keyword">*</span>则函数在Element(0)与Element(1)之间插入元素</span><br><span class="line">	 <span class="keyword">*</span>插入元素后，cursor在Element(1)前</span><br><span class="line">	 <span class="keyword">*</span>/</span><br><span class="line">	void add(E e);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="u5256_u6790"><a href="#u5256_u6790" class="headerlink" title="剖析"></a>剖析</h3><p>这个接口其实就是双向链表。要注意以下几点</p>
+<ol>
+<li>cursor与元素位置index的关系</li>
+<li>set(E e)与remove()方法的操作，需根据上一次访问的是next()还是previous()。具体详见上面的解析。</li>
+</ol>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/11/01/javaSourceCode/java.util/RandomAccess/" itemprop="url">
+                  java源码之RandomAccess
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-11-01T09:31:32+08:00" content="2015-11-01">
+              2015-11-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/java-util/" itemprop="url" rel="index">
+                    <span itemprop="name">java.util</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/11/01/javaSourceCode/java.util/RandomAccess/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/01/javaSourceCode/java.util/RandomAccess/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h3 id="u6E90_u4EE3_u7801"><a href="#u6E90_u4EE3_u7801" class="headerlink" title="源代码"></a>源代码</h3><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">package java.util;</span><br><span class="line"></span><br><span class="line">/<span class="keyword">*</span><span class="keyword">*</span></span><br><span class="line"> <span class="keyword">*</span> for typical instances of the class, this loop:</span><br><span class="line"> <span class="keyword">*</span> <span class="variable">&lt;pre&gt;</span></span><br><span class="line"> <span class="keyword">*</span>     for (int i=0, n=list.size(); i &amp;lt; n; i++)</span><br><span class="line"> <span class="keyword">*</span>         list.get(i);</span><br><span class="line"> <span class="keyword">*</span> <span class="variable">&lt;/pre&gt;</span></span><br><span class="line"> <span class="keyword">*</span> runs faster than this loop:</span><br><span class="line"> <span class="keyword">*</span> <span class="variable">&lt;pre&gt;</span></span><br><span class="line"> <span class="keyword">*</span>     for (Iterator i=list.iterator(); i.hasNext(); )</span><br><span class="line"> <span class="keyword">*</span>         i.next();</span><br><span class="line"> <span class="keyword">*</span> <span class="variable">&lt;/pre&gt;</span></span><br><span class="line"> <span class="keyword">*</span> 说明了实现了这个接口，前一种的访问速度会更快</span><br><span class="line"> <span class="keyword">*</span>/</span><br><span class="line"></span><br><span class="line">//标记接口</span><br><span class="line">public interface RandomAccess &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="u5256_u6790"><a href="#u5256_u6790" class="headerlink" title="剖析"></a>剖析</h3><p>这个是一个标记接口，实现了该接口的类，表示了可以随机访问。</p>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/10/31/javaSourceCode/java.lang/IndexOutOfBoundsException/" itemprop="url">
+                  java源码之IndexOutOfBoundsException
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-10-31T22:30:12+08:00" content="2015-10-31">
+              2015-10-31
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/java-lang/" itemprop="url" rel="index">
+                    <span itemprop="name">java.lang</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/10/31/javaSourceCode/java.lang/IndexOutOfBoundsException/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/31/javaSourceCode/java.lang/IndexOutOfBoundsException/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h3 id="u6E90_u4EE3_u7801"><a href="#u6E90_u4EE3_u7801" class="headerlink" title="源代码"></a>源代码</h3><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> java.lang;</span><br><span class="line"></span><br><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">IndexOutOfBoundsException</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">RuntimeException</span> &#123;</span></span><br><span class="line">	</span><br><span class="line">	public <span class="type">IndexOutOfBoundsException</span>()&#123;</span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public <span class="type">IndexOutOfBoundsException</span>(<span class="type">String</span> s)&#123;</span><br><span class="line">		<span class="keyword">super</span>(s);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="u5256_u6790"><a href="#u5256_u6790" class="headerlink" title="剖析"></a>剖析</h3><p>这个是一个异常类，主要是用于抛出index不合法的异常。</p>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/10/31/javaSourceCode/java.lang/Cloneable/" itemprop="url">
+                  java源码之Cloneable
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-10-31T21:31:11+08:00" content="2015-10-31">
+              2015-10-31
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/java-lang/" itemprop="url" rel="index">
+                    <span itemprop="name">java.lang</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/10/31/javaSourceCode/java.lang/Cloneable/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/31/javaSourceCode/java.lang/Cloneable/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h3 id="u6E90_u4EE3_u7801"><a href="#u6E90_u4EE3_u7801" class="headerlink" title="源代码"></a>源代码</h3><figure class="highlight sml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">package java.lang;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * x.clone<span class="literal">()</span>!=x 为<span class="literal">true</span>,就是说他们不是同一个对象.</span><br><span class="line"> * x.clone<span class="literal">()</span>.getClass<span class="literal">()</span>==x.getClass<span class="literal">()</span> 为<span class="literal">true</span>,他们是同一个类型<span class="type">Class</span>.</span><br><span class="line"> * x.equals(x.clone<span class="literal">()</span>) 为<span class="literal">true</span>,逻辑上应该相当.</span><br><span class="line"> */</span><br><span class="line">public interface <span class="type">Cloneable</span> &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="u5256_u6790"><a href="#u5256_u6790" class="headerlink" title="剖析"></a>剖析</h3><p>这个接口没有定义任何方法，其实只是作为一个标记而已</p>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/10/31/javaSourceCode/java.util/AbstractCollection/" itemprop="url">
+                  java源码之AbstractCollection
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-10-31T20:01:15+08:00" content="2015-10-31">
+              2015-10-31
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/java-util/" itemprop="url" rel="index">
+                    <span itemprop="name">java.util</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/10/31/javaSourceCode/java.util/AbstractCollection/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/31/javaSourceCode/java.util/AbstractCollection/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h3 id="u6E90_u4EE3_u7801"><a href="#u6E90_u4EE3_u7801" class="headerlink" title="源代码"></a>源代码</h3><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> java.util;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> AbstractCollection&lt;E&gt; <span class="keyword">implements</span> Collection&lt;E&gt; &#123;</span><br><span class="line">	<span class="keyword">protected</span> AbstractCollection()&#123;	</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">abstract</span> Iterator&lt;E&gt; iterator();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">int</span> <span class="keyword">size</span>();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">boolean</span> isEmpty()&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">size</span>()==<span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">boolean</span> add(E e)&#123;</span><br><span class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> UnsupportedOperationException();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">boolean</span> contains(Object o)&#123;</span><br><span class="line">		Iterator&lt;E&gt; it=iterator();</span><br><span class="line">		<span class="keyword">if</span>(java.util.Objects.equals(o, <span class="keyword">null</span>))&#123;</span><br><span class="line">			<span class="keyword">while</span>(it.hasNext())&#123;</span><br><span class="line">				<span class="keyword">if</span>(java.util.Objects.equals(it.<span class="keyword">next</span>(),<span class="keyword">null</span>))&#123;</span><br><span class="line">					<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">while</span>(it.hasNext())&#123;</span><br><span class="line">				<span class="keyword">if</span>(o.equals(it.<span class="keyword">next</span>()))&#123;</span><br><span class="line">					<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">boolean</span> containsAll(Collection&lt;?&gt; c)&#123;</span><br><span class="line">		<span class="keyword">for</span>(Object e:c)&#123;</span><br><span class="line">			<span class="keyword">if</span>(!contains(e))&#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span><br><span class="line">	 * 这个函数只删除第一次出现的元素，后面的不删除</span><br><span class="line">	 * 如果要删除全部则，可以先用o创建一个Collection型</span><br><span class="line">	 * 的集合，然后用removeAll，就可以删除全部出现的</span><br><span class="line">	 */</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">boolean</span> remove(Object o)&#123;</span><br><span class="line">		Iterator&lt;E&gt; it=iterator();</span><br><span class="line">		<span class="keyword">if</span>(java.util.Objects.equals(o,<span class="keyword">null</span>))&#123;</span><br><span class="line">			<span class="keyword">while</span>(it.hasNext())&#123;</span><br><span class="line">				<span class="keyword">if</span>(it.<span class="keyword">next</span>().equals(o))&#123;</span><br><span class="line">					it.remove();</span><br><span class="line">					<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">while</span>(it.hasNext())&#123;</span><br><span class="line">				<span class="keyword">if</span>(it.<span class="keyword">next</span>().equals(o))&#123;</span><br><span class="line">					it.remove();</span><br><span class="line">					<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">boolean</span> removeAll(Collection&lt;?&gt; c)&#123;</span><br><span class="line">		Objects.requireNonNull(c);</span><br><span class="line">		<span class="keyword">boolean</span> modified=<span class="keyword">false</span>;</span><br><span class="line">		Iterator&lt;E&gt; it=iterator();</span><br><span class="line">		<span class="keyword">while</span>(it.hasNext())&#123;</span><br><span class="line">			<span class="comment">//这里直接调用Collection接口中的contains</span></span><br><span class="line">			<span class="comment">//但Collection接口中的contains并没有实现</span></span><br><span class="line">			<span class="comment">//所以，这里的参数c是一个实现了Collection</span></span><br><span class="line">			<span class="comment">//接口的类对象，并且它实现了contains方法。</span></span><br><span class="line">			<span class="keyword">if</span>(c.contains(it.<span class="keyword">next</span>()))&#123;</span><br><span class="line">				it.remove();</span><br><span class="line">				modified=<span class="keyword">true</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> modified;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">boolean</span> retainAll(Collection&lt;?&gt; c)&#123;</span><br><span class="line">		Objects.requireNonNull(c);</span><br><span class="line">		<span class="keyword">boolean</span> modified=<span class="keyword">false</span>;</span><br><span class="line">		Iterator&lt;E&gt; it=iterator();</span><br><span class="line">		<span class="keyword">while</span>(it.hasNext())&#123;</span><br><span class="line">			<span class="keyword">if</span>(!c.contains(it.<span class="keyword">next</span>()))&#123;</span><br><span class="line">				it.remove();</span><br><span class="line">				modified=<span class="keyword">true</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> modified;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> clear()&#123;</span><br><span class="line">		Iterator&lt;E&gt; it=iterator();</span><br><span class="line">		<span class="keyword">while</span>(it.hasNext())&#123;</span><br><span class="line">			it.<span class="keyword">next</span>();</span><br><span class="line">			it.remove();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> String toString()&#123;</span><br><span class="line">		Iterator&lt;E&gt; it=iterator();</span><br><span class="line">		<span class="keyword">if</span>(!it.hasNext())&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="string">"[]"</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		StringBuilder sb=<span class="keyword">new</span> StringBuilder();</span><br><span class="line">		sb.<span class="keyword">append</span>(<span class="string">"["</span>);</span><br><span class="line">		<span class="keyword">for</span>(;;)&#123;</span><br><span class="line">			E e=it.<span class="keyword">next</span>();</span><br><span class="line">			<span class="comment">/**</span><br><span class="line">			 * e为什么会等于this解析</span><br><span class="line">			 * 比如ArrayList没有使用泛型，就可以添加自己</span><br><span class="line">			 * ArrayList als=new ArrayList();</span><br><span class="line">			 * als.add("hello");</span><br><span class="line">			 * als.add("world");</span><br><span class="line">			 * als.add(als);</span><br><span class="line">			 * System.out.println(als);</span><br><span class="line">			 */</span></span><br><span class="line">			sb.<span class="keyword">append</span>(e==<span class="keyword">this</span>? <span class="string">"(this Collection"</span> :e);</span><br><span class="line">			<span class="keyword">if</span>(!it.hasNext())&#123;</span><br><span class="line">				<span class="keyword">return</span> sb.<span class="keyword">append</span>(<span class="string">"]"</span>).toString();</span><br><span class="line">			&#125;</span><br><span class="line">			sb.<span class="keyword">append</span>(<span class="string">","</span>).<span class="keyword">append</span>(<span class="string">" "</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span><br><span class="line">	 * 里面的finishToArray函数不理解</span><br><span class="line">	 * 数组r的长度为r.length,赋给i</span><br><span class="line">	 * 还可以r[i++]，不会报数组越界吗？</span><br><span class="line">	 */</span></span><br><span class="line">	<span class="keyword">public</span> Object[] toArray()&#123;</span><br><span class="line">		Object r[]=<span class="keyword">new</span> Object[<span class="keyword">size</span>()];</span><br><span class="line">		Iterator&lt;E&gt; it=iterator();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;r.length;i++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(!it.hasNext())&#123;</span><br><span class="line">				<span class="keyword">return</span> Arrays.copyOf(r, i);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">//这里使用的是引用，说明如果对返回数组中的数据进行修改</span></span><br><span class="line">			<span class="comment">//同样会作用于原数据</span></span><br><span class="line">			r[i]=it.<span class="keyword">next</span>();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> it.hasNext()?finishToArray(r,it):r;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span><br><span class="line">	 * 没看懂是啥意思</span><br><span class="line">	 */</span>	</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAX_ARRAY_SIZE = Integer.MAX_VALUE - <span class="number">8</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> &lt;T&gt; T[] finishToArray(T[] r, Iterator&lt;?&gt; it) &#123;</span><br><span class="line">	        <span class="keyword">int</span> i = r.length;</span><br><span class="line">	        <span class="keyword">while</span> (it.hasNext()) &#123;</span><br><span class="line">	            <span class="keyword">int</span> cap = r.length;</span><br><span class="line">	            <span class="keyword">if</span> (i == cap) &#123;</span><br><span class="line">	                <span class="keyword">int</span> newCap = cap + (cap &gt;&gt; <span class="number">1</span>) + <span class="number">1</span>;</span><br><span class="line">	                <span class="comment">// overflow-conscious code</span></span><br><span class="line">	                <span class="keyword">if</span> (newCap - MAX_ARRAY_SIZE &gt; <span class="number">0</span>)</span><br><span class="line">	                    newCap = hugeCapacity(cap + <span class="number">1</span>);</span><br><span class="line">	                r = Arrays.copyOf(r, newCap);</span><br><span class="line">	            &#125;</span><br><span class="line">	            r[i++] = (T)it.<span class="keyword">next</span>();</span><br><span class="line">	        &#125;</span><br><span class="line">	        <span class="comment">// trim if overallocated</span></span><br><span class="line">	        <span class="keyword">return</span> (i == r.length) ? r : Arrays.copyOf(r, i);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> hugeCapacity(<span class="keyword">int</span> minCapacity) &#123;</span><br><span class="line">        <span class="keyword">if</span> (minCapacity &lt; <span class="number">0</span>) <span class="comment">// overflow</span></span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> OutOfMemoryError</span><br><span class="line">                (<span class="string">"Required array size too large"</span>);</span><br><span class="line">        <span class="keyword">return</span> (minCapacity &gt; MAX_ARRAY_SIZE) ?</span><br><span class="line">            Integer.MAX_VALUE :</span><br><span class="line">            MAX_ARRAY_SIZE;</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span><br><span class="line">	 * 如果a的长度小于size，则a中的元素都为null</span><br><span class="line">	 * 如果a的长度大于size，则a中的前size个元素为iterator，超出的为null</span><br><span class="line">	 * 如果a的长度小于size，则返回的值是iterator中的元素</span><br><span class="line">	 * 如果a的长度大于size，则返回的值是iterator中的元素，其它(a.length-size())值为null</span><br><span class="line">	 */</span></span><br><span class="line">	<span class="keyword">public</span> &lt;T&gt; T[] toArray(T[] a) &#123;</span><br><span class="line">        <span class="comment">// Estimate size of array; be prepared to see more or fewer elements</span></span><br><span class="line">        <span class="keyword">int</span> <span class="keyword">size</span> = <span class="keyword">size</span>();</span><br><span class="line">        T[] r = a.length &gt;= <span class="keyword">size</span> ? a :</span><br><span class="line">                  (T[])java.lang.reflect.Array</span><br><span class="line">                  .newInstance(a.getClass().getComponentType(), <span class="keyword">size</span>);</span><br><span class="line">        Iterator&lt;E&gt; it = iterator();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; r.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (! it.hasNext()) &#123; <span class="comment">// fewer elements than expected</span></span><br><span class="line">                <span class="keyword">if</span> (a == r) &#123;</span><br><span class="line">                    r[i] = <span class="keyword">null</span>; <span class="comment">// null-terminate</span></span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (a.length &lt; i) &#123;</span><br><span class="line">                    <span class="keyword">return</span> Arrays.copyOf(r, i);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    System.arraycopy(r, <span class="number">0</span>, a, <span class="number">0</span>, i);</span><br><span class="line">                    <span class="keyword">if</span> (a.length &gt; i) &#123;</span><br><span class="line">                        a[i] = <span class="keyword">null</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> a;</span><br><span class="line">            &#125;</span><br><span class="line">            r[i] = (T)it.<span class="keyword">next</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// more elements than expected</span></span><br><span class="line">        <span class="keyword">return</span> it.hasNext() ? finishToArray(r, it) : r;</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">boolean</span> addAll(Collection&lt;? <span class="keyword">extends</span> E&gt; c)&#123;</span><br><span class="line">		<span class="keyword">boolean</span> modified=<span class="keyword">false</span>;</span><br><span class="line">		<span class="keyword">for</span>(E e:c)&#123;</span><br><span class="line">			<span class="keyword">if</span>(add(e))&#123;</span><br><span class="line">				modified=<span class="keyword">true</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> modified;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="u5256_u6790"><a href="#u5256_u6790" class="headerlink" title="剖析"></a>剖析</h3><p>这个抽象类最主要的方法是：<code>iterator(),size(),add()</code>。<br>其它的方法都是基于这三个来实现的。<br>因此这三个方法是抽象方法或者是抛出未定义异常。</p>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/10/31/javaSourceCode/java.util/Collection/" itemprop="url">
+                  java源码之Collection
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-10-31T12:37:41+08:00" content="2015-10-31">
+              2015-10-31
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/java-util/" itemprop="url" rel="index">
+                    <span itemprop="name">java.util</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/10/31/javaSourceCode/java.util/Collection/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/31/javaSourceCode/java.util/Collection/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h3 id="u6E90_u4EE3_u7801"><a href="#u6E90_u4EE3_u7801" class="headerlink" title="源代码"></a>源代码</h3><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">package java.util;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.function.<span class="type">Predicate</span>;</span><br><span class="line"></span><br><span class="line">public <span class="keyword">interface</span> <span class="type">Collection</span>&lt;E&gt; extends <span class="type">Iterable</span> &#123;</span><br><span class="line">	</span><br><span class="line">	<span class="type">int</span> size();</span><br><span class="line">	</span><br><span class="line">	boolean isEmpty();</span><br><span class="line">	</span><br><span class="line">	boolean contains(<span class="type">Object</span> o);</span><br><span class="line">	</span><br><span class="line">	/**</span><br><span class="line">	 * <span class="type">Collection</span>&lt;E&gt;已经继承了<span class="type">Iterable</span>&lt;E&gt;</span><br><span class="line">	 * 而<span class="type">Iterable</span>&lt;E&gt;中已经定义了<span class="keyword">iterator</span>()</span><br><span class="line">	 * 这个函数接口了，之所以在<span class="type">Collection</span>&lt;E&gt;</span><br><span class="line">	 * 重新定义只是作为显示而已</span><br><span class="line">	 */</span><br><span class="line">	<span class="type">Iterator</span>&lt;E&gt; <span class="keyword">iterator</span>();</span><br><span class="line">	</span><br><span class="line">	/**</span><br><span class="line">	 * 这个返回的值是一个复本</span><br><span class="line">	 */</span><br><span class="line">	<span class="type">Object</span>[] toArray();</span><br><span class="line">	</span><br><span class="line">	&lt;T&gt; T[] toArray(T[] a);</span><br><span class="line">	</span><br><span class="line">	//没有说明在哪个位置进行添加，因为集合没有位置的概念</span><br><span class="line">	boolean add(E e);</span><br><span class="line">	</span><br><span class="line">	//解释：源码中的@<span class="keyword">return</span>这一句：</span><br><span class="line">	//@<span class="keyword">return</span> &lt;tt&gt;<span class="literal">true</span>&lt;/tt&gt; <span class="keyword">if</span> an element was removed <span class="keyword">as</span> a <span class="literal">result</span> <span class="keyword">of</span> this call</span><br><span class="line">	//说的是删除一个元素，如果有多个重复的元素，应该是删除第一个出现的元素</span><br><span class="line">	//同时也可以从<span class="type">AbstractCollection</span>中的remove函数看出来</span><br><span class="line">	boolean remove(<span class="type">Object</span> o);</span><br><span class="line">	</span><br><span class="line">	boolean containsAll(<span class="type">Collection</span>&lt;?&gt; c);</span><br><span class="line">	</span><br><span class="line">	boolean addAll(<span class="type">Collection</span>&lt;? extends E&gt; c);</span><br><span class="line">	</span><br><span class="line">	boolean removeAll(<span class="type">Collection</span>&lt;?&gt; c);</span><br><span class="line">	</span><br><span class="line">	/**</span><br><span class="line">	 * 删除除了c里面的其它元素</span><br><span class="line">	 */</span><br><span class="line">	boolean retrainAll(<span class="type">Collection</span>&lt;?&gt; c);</span><br><span class="line">	</span><br><span class="line">	<span class="type">void</span> clear();</span><br><span class="line">	</span><br><span class="line">	boolean equals(<span class="type">Object</span> o);</span><br><span class="line">	</span><br><span class="line">	<span class="type">int</span> hashCode();</span><br><span class="line">	</span><br><span class="line">	default boolean removeIf(<span class="type">Predicate</span>&lt;? super E&gt; filter)&#123;</span><br><span class="line">		<span class="type">Objects</span>.requireNonNull(filter);</span><br><span class="line">		boolean removed=<span class="literal">false</span>;</span><br><span class="line">		final <span class="type">Iterator</span>&lt;E&gt; each=<span class="keyword">iterator</span>();</span><br><span class="line">		<span class="keyword">while</span>(each.hasNext())&#123;</span><br><span class="line">			<span class="keyword">if</span>(filter.test(each.next()))&#123;</span><br><span class="line">				each.remove();</span><br><span class="line">				removed=<span class="literal">true</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> removed;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="u5256_u6790"><a href="#u5256_u6790" class="headerlink" title="剖析"></a>剖析</h3><p>这个接口也挺简单的，定义了一些关于集合的方法。</p>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/10/30/javaSourceCode/java.lang/Iterable/" itemprop="url">
+                  java源码之Iterable
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-10-30T11:17:45+08:00" content="2015-10-30">
+              2015-10-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/java-lang/" itemprop="url" rel="index">
+                    <span itemprop="name">java.lang</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/10/30/javaSourceCode/java.lang/Iterable/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/30/javaSourceCode/java.lang/Iterable/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h3 id="u6E90_u4EE3_u7801"><a href="#u6E90_u4EE3_u7801" class="headerlink" title="源代码"></a>源代码</h3><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">package java.lang;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.<span class="type">Iterator</span>;</span><br><span class="line"></span><br><span class="line">public <span class="keyword">interface</span> <span class="type">Iterable</span>&lt;T&gt; &#123;</span><br><span class="line">	<span class="type">Iterator</span>&lt;T&gt; <span class="keyword">iterator</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="u5256_u6790"><a href="#u5256_u6790" class="headerlink" title="剖析"></a>剖析</h3><p>这个接口很简单，也没什么好说的。有一点要提到的是，有了<code>Iterator</code>，为什么还要重复定义一个<code>Iterable</code>？<br>主要是因为，如果你继承了<code>Iterable</code>时，在实现<code>iterator()</code>方法时，比如你可以设置迭代器每次都从起始结点开始。即各迭代器是独立的。</p>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
 
   </section>
 
