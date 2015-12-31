@@ -53,16 +53,16 @@
 
 
 
-<meta name="description" content="源代码12345678910111213141516171819package java.util;import java.util.function.Consumer;public interface Iterator&amp;lt;E&amp;gt; &amp;#123;    boolean hasNext();    E next();    default void remove() &amp;#123;">
+<meta name="description" content="源代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566package java.util;import java.util.function.Predicate;public interface Col">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java源码之Iterator">
-<meta property="og:url" content="http://jinpingwang.github.io/2015/10/30/javaSourceCode/java.util/Iterator/index.html">
+<meta property="og:title" content="java源码之Collection">
+<meta property="og:url" content="http://jinpingwang.github.io/2015/10/31/javaSourceCode/java.util/Collection/index.html">
 <meta property="og:site_name" content="WangJinPing">
-<meta property="og:description" content="源代码12345678910111213141516171819package java.util;import java.util.function.Consumer;public interface Iterator&amp;lt;E&amp;gt; &amp;#123;    boolean hasNext();    E next();    default void remove() &amp;#123;">
-<meta property="og:updated_time" content="2015-12-31T01:11:56.735Z">
+<meta property="og:description" content="源代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566package java.util;import java.util.function.Predicate;public interface Col">
+<meta property="og:updated_time" content="2015-12-31T01:28:03.333Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java源码之Iterator">
-<meta name="twitter:description" content="源代码12345678910111213141516171819package java.util;import java.util.function.Consumer;public interface Iterator&amp;lt;E&amp;gt; &amp;#123;    boolean hasNext();    E next();    default void remove() &amp;#123;">
+<meta name="twitter:title" content="java源码之Collection">
+<meta name="twitter:description" content="源代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566package java.util;import java.util.function.Predicate;public interface Col">
 
 
 
@@ -74,7 +74,7 @@
   };
 </script>
 
-  <title> java源码之Iterator | WangJinPing </title>
+  <title> java源码之Collection | WangJinPing </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -237,7 +237,7 @@
             
             
               
-                java源码之Iterator
+                java源码之Collection
               
             
           </h1>
@@ -246,8 +246,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-10-30T10:07:21+08:00" content="2015-10-30">
-              2015-10-30
+            <time itemprop="dateCreated" datetime="2015-10-31T12:37:41+08:00" content="2015-10-31">
+              2015-10-31
             </time>
           </span>
 
@@ -272,8 +272,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/10/30/javaSourceCode/java.util/Iterator/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/30/javaSourceCode/java.util/Iterator/" itemprop="commentsCount"></span>
+                <a href="/2015/10/31/javaSourceCode/java.util/Collection/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/31/javaSourceCode/java.util/Collection/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -292,8 +292,8 @@
       
 
       
-        <span itemprop="articleBody"><h3 id="u6E90_u4EE3_u7801"><a href="#u6E90_u4EE3_u7801" class="headerlink" title="源代码"></a>源代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> java.util;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.function.Consumer;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Iterator</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">E <span class="title">next</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> UnsupportedOperationException(<span class="string">"remove"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">forEachRemaining</span><span class="params">(Consumer&lt;? <span class="keyword">super</span> E&gt; action)</span> </span>&#123;</span><br><span class="line">        Objects.requireNonNull(action);</span><br><span class="line">        <span class="keyword">while</span> (hasNext())</span><br><span class="line">            action.accept(next());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="u5256_u6790"><a href="#u5256_u6790" class="headerlink" title="剖析"></a>剖析</h3><p>Iterator<e>就是一个接口，很简单，没什么好讲的。要注意一点就是<br><code>forEachRemaining(Consumer&lt;? super E&gt; action)</code><br>这个方法是1.8版本才有的，之前的版本没有。</e></p>
+        <span itemprop="articleBody"><h3 id="u6E90_u4EE3_u7801"><a href="#u6E90_u4EE3_u7801" class="headerlink" title="源代码"></a>源代码</h3><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">package java.util;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.function.<span class="type">Predicate</span>;</span><br><span class="line"></span><br><span class="line">public <span class="keyword">interface</span> <span class="type">Collection</span>&lt;E&gt; extends <span class="type">Iterable</span> &#123;</span><br><span class="line">	</span><br><span class="line">	<span class="type">int</span> size();</span><br><span class="line">	</span><br><span class="line">	boolean isEmpty();</span><br><span class="line">	</span><br><span class="line">	boolean contains(<span class="type">Object</span> o);</span><br><span class="line">	</span><br><span class="line">	/**</span><br><span class="line">	 * <span class="type">Collection</span>&lt;E&gt;已经继承了<span class="type">Iterable</span>&lt;E&gt;</span><br><span class="line">	 * 而<span class="type">Iterable</span>&lt;E&gt;中已经定义了<span class="keyword">iterator</span>()</span><br><span class="line">	 * 这个函数接口了，之所以在<span class="type">Collection</span>&lt;E&gt;</span><br><span class="line">	 * 重新定义只是作为显示而已</span><br><span class="line">	 */</span><br><span class="line">	<span class="type">Iterator</span>&lt;E&gt; <span class="keyword">iterator</span>();</span><br><span class="line">	</span><br><span class="line">	/**</span><br><span class="line">	 * 这个返回的值是一个复本</span><br><span class="line">	 */</span><br><span class="line">	<span class="type">Object</span>[] toArray();</span><br><span class="line">	</span><br><span class="line">	&lt;T&gt; T[] toArray(T[] a);</span><br><span class="line">	</span><br><span class="line">	//没有说明在哪个位置进行添加，因为集合没有位置的概念</span><br><span class="line">	boolean add(E e);</span><br><span class="line">	</span><br><span class="line">	//解释：源码中的@<span class="keyword">return</span>这一句：</span><br><span class="line">	//@<span class="keyword">return</span> &lt;tt&gt;<span class="literal">true</span>&lt;/tt&gt; <span class="keyword">if</span> an element was removed <span class="keyword">as</span> a <span class="literal">result</span> <span class="keyword">of</span> this call</span><br><span class="line">	//说的是删除一个元素，如果有多个重复的元素，应该是删除第一个出现的元素</span><br><span class="line">	//同时也可以从<span class="type">AbstractCollection</span>中的remove函数看出来</span><br><span class="line">	boolean remove(<span class="type">Object</span> o);</span><br><span class="line">	</span><br><span class="line">	boolean containsAll(<span class="type">Collection</span>&lt;?&gt; c);</span><br><span class="line">	</span><br><span class="line">	boolean addAll(<span class="type">Collection</span>&lt;? extends E&gt; c);</span><br><span class="line">	</span><br><span class="line">	boolean removeAll(<span class="type">Collection</span>&lt;?&gt; c);</span><br><span class="line">	</span><br><span class="line">	/**</span><br><span class="line">	 * 删除除了c里面的其它元素</span><br><span class="line">	 */</span><br><span class="line">	boolean retrainAll(<span class="type">Collection</span>&lt;?&gt; c);</span><br><span class="line">	</span><br><span class="line">	<span class="type">void</span> clear();</span><br><span class="line">	</span><br><span class="line">	boolean equals(<span class="type">Object</span> o);</span><br><span class="line">	</span><br><span class="line">	<span class="type">int</span> hashCode();</span><br><span class="line">	</span><br><span class="line">	default boolean removeIf(<span class="type">Predicate</span>&lt;? super E&gt; filter)&#123;</span><br><span class="line">		<span class="type">Objects</span>.requireNonNull(filter);</span><br><span class="line">		boolean removed=<span class="literal">false</span>;</span><br><span class="line">		final <span class="type">Iterator</span>&lt;E&gt; each=<span class="keyword">iterator</span>();</span><br><span class="line">		<span class="keyword">while</span>(each.hasNext())&#123;</span><br><span class="line">			<span class="keyword">if</span>(filter.test(each.next()))&#123;</span><br><span class="line">				each.remove();</span><br><span class="line">				removed=<span class="literal">true</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> removed;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="u5256_u6790"><a href="#u5256_u6790" class="headerlink" title="剖析"></a>剖析</h3><p>这个接口也挺简单的，定义了一些关于集合的方法。</p>
 </span>
       
     </div>
@@ -313,12 +313,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2015/10/30/javaSourceCode/java.lang/Iterable/" rel="next" title="java源码之Iterable">
+                <i class="fa fa-chevron-left"></i> java源码之Iterable
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/30/javaSourceCode/java.lang/Iterable/" rel="prev" title="java源码之Iterable">
-                java源码之Iterable <i class="fa fa-chevron-right"></i>
+              <a href="/2015/10/31/javaSourceCode/java.util/AbstractCollection/" rel="prev" title="java源码之AbstractCollection">
+                java源码之AbstractCollection <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -346,8 +350,8 @@
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/10/30/javaSourceCode/java.util/Iterator/"
-           data-title="java源码之Iterator" data-url="http://jinpingwang.github.io/2015/10/30/javaSourceCode/java.util/Iterator/">
+      <div class="ds-thread" data-thread-key="2015/10/31/javaSourceCode/java.util/Collection/"
+           data-title="java源码之Collection" data-url="http://jinpingwang.github.io/2015/10/31/javaSourceCode/java.util/Collection/">
       </div>
     
   </div>

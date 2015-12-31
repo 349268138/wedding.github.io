@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="java.util,java源码," />
+  <meta name="keywords" content="java.lang,java源码," />
 
 
 
@@ -53,16 +53,16 @@
 
 
 
-<meta name="description" content="源代码12345678910111213141516171819package java.util;import java.util.function.Consumer;public interface Iterator&amp;lt;E&amp;gt; &amp;#123;    boolean hasNext();    E next();    default void remove() &amp;#123;">
+<meta name="description" content="源代码123456789101112package java.lang;public class IndexOutOfBoundsException extends RuntimeException &amp;#123;		public IndexOutOfBoundsException()&amp;#123;		super();	&amp;#125;		public IndexOutOfBoundsException(">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java源码之Iterator">
-<meta property="og:url" content="http://jinpingwang.github.io/2015/10/30/javaSourceCode/java.util/Iterator/index.html">
+<meta property="og:title" content="java源码之IndexOutOfBoundsException">
+<meta property="og:url" content="http://jinpingwang.github.io/2015/10/31/javaSourceCode/java.lang/IndexOutOfBoundsException/index.html">
 <meta property="og:site_name" content="WangJinPing">
-<meta property="og:description" content="源代码12345678910111213141516171819package java.util;import java.util.function.Consumer;public interface Iterator&amp;lt;E&amp;gt; &amp;#123;    boolean hasNext();    E next();    default void remove() &amp;#123;">
-<meta property="og:updated_time" content="2015-12-31T01:11:56.735Z">
+<meta property="og:description" content="源代码123456789101112package java.lang;public class IndexOutOfBoundsException extends RuntimeException &amp;#123;		public IndexOutOfBoundsException()&amp;#123;		super();	&amp;#125;		public IndexOutOfBoundsException(">
+<meta property="og:updated_time" content="2015-12-31T01:52:23.050Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java源码之Iterator">
-<meta name="twitter:description" content="源代码12345678910111213141516171819package java.util;import java.util.function.Consumer;public interface Iterator&amp;lt;E&amp;gt; &amp;#123;    boolean hasNext();    E next();    default void remove() &amp;#123;">
+<meta name="twitter:title" content="java源码之IndexOutOfBoundsException">
+<meta name="twitter:description" content="源代码123456789101112package java.lang;public class IndexOutOfBoundsException extends RuntimeException &amp;#123;		public IndexOutOfBoundsException()&amp;#123;		super();	&amp;#125;		public IndexOutOfBoundsException(">
 
 
 
@@ -74,7 +74,7 @@
   };
 </script>
 
-  <title> java源码之Iterator | WangJinPing </title>
+  <title> java源码之IndexOutOfBoundsException | WangJinPing </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -237,7 +237,7 @@
             
             
               
-                java源码之Iterator
+                java源码之IndexOutOfBoundsException
               
             
           </h1>
@@ -246,8 +246,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-10-30T10:07:21+08:00" content="2015-10-30">
-              2015-10-30
+            <time itemprop="dateCreated" datetime="2015-10-31T22:30:12+08:00" content="2015-10-31">
+              2015-10-31
             </time>
           </span>
 
@@ -256,8 +256,8 @@
               &nbsp; | &nbsp; 分类于
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/java-util/" itemprop="url" rel="index">
-                    <span itemprop="name">java.util</span>
+                  <a href="/categories/java-lang/" itemprop="url" rel="index">
+                    <span itemprop="name">java.lang</span>
                   </a>
                 </span>
 
@@ -272,8 +272,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/10/30/javaSourceCode/java.util/Iterator/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/30/javaSourceCode/java.util/Iterator/" itemprop="commentsCount"></span>
+                <a href="/2015/10/31/javaSourceCode/java.lang/IndexOutOfBoundsException/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/31/javaSourceCode/java.lang/IndexOutOfBoundsException/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -292,8 +292,8 @@
       
 
       
-        <span itemprop="articleBody"><h3 id="u6E90_u4EE3_u7801"><a href="#u6E90_u4EE3_u7801" class="headerlink" title="源代码"></a>源代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> java.util;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.function.Consumer;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Iterator</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">E <span class="title">next</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> UnsupportedOperationException(<span class="string">"remove"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">forEachRemaining</span><span class="params">(Consumer&lt;? <span class="keyword">super</span> E&gt; action)</span> </span>&#123;</span><br><span class="line">        Objects.requireNonNull(action);</span><br><span class="line">        <span class="keyword">while</span> (hasNext())</span><br><span class="line">            action.accept(next());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="u5256_u6790"><a href="#u5256_u6790" class="headerlink" title="剖析"></a>剖析</h3><p>Iterator<e>就是一个接口，很简单，没什么好讲的。要注意一点就是<br><code>forEachRemaining(Consumer&lt;? super E&gt; action)</code><br>这个方法是1.8版本才有的，之前的版本没有。</e></p>
+        <span itemprop="articleBody"><h3 id="u6E90_u4EE3_u7801"><a href="#u6E90_u4EE3_u7801" class="headerlink" title="源代码"></a>源代码</h3><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> java.lang;</span><br><span class="line"></span><br><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">IndexOutOfBoundsException</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">RuntimeException</span> &#123;</span></span><br><span class="line">	</span><br><span class="line">	public <span class="type">IndexOutOfBoundsException</span>()&#123;</span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public <span class="type">IndexOutOfBoundsException</span>(<span class="type">String</span> s)&#123;</span><br><span class="line">		<span class="keyword">super</span>(s);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="u5256_u6790"><a href="#u5256_u6790" class="headerlink" title="剖析"></a>剖析</h3><p>这个是一个异常类，主要是用于抛出index不合法的异常。</p>
 </span>
       
     </div>
@@ -302,7 +302,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/java-util/" rel="tag">#java.util</a>
+            <a href="/tags/java-lang/" rel="tag">#java.lang</a>
           
             <a href="/tags/java源码/" rel="tag">#java源码</a>
           
@@ -313,12 +313,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2015/10/31/javaSourceCode/java.lang/Cloneable/" rel="next" title="java源码之Cloneable">
+                <i class="fa fa-chevron-left"></i> java源码之Cloneable
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/30/javaSourceCode/java.lang/Iterable/" rel="prev" title="java源码之Iterable">
-                java源码之Iterable <i class="fa fa-chevron-right"></i>
+              <a href="/2015/11/01/javaSourceCode/java.util/RandomAccess/" rel="prev" title="java源码之RandomAccess">
+                java源码之RandomAccess <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -346,8 +350,8 @@
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/10/30/javaSourceCode/java.util/Iterator/"
-           data-title="java源码之Iterator" data-url="http://jinpingwang.github.io/2015/10/30/javaSourceCode/java.util/Iterator/">
+      <div class="ds-thread" data-thread-key="2015/10/31/javaSourceCode/java.lang/IndexOutOfBoundsException/"
+           data-title="java源码之IndexOutOfBoundsException" data-url="http://jinpingwang.github.io/2015/10/31/javaSourceCode/java.lang/IndexOutOfBoundsException/">
       </div>
     
   </div>
