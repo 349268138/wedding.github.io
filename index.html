@@ -41,7 +41,7 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="WangJinPing" type="application/atom+xml" />
+  <link rel="alternate" href="/atom.xml" title="WangJinPing's blog" type="application/atom+xml" />
 
 
 
@@ -55,12 +55,12 @@
 
 <meta name="description" content="Waiting for the wind">
 <meta property="og:type" content="website">
-<meta property="og:title" content="WangJinPing">
+<meta property="og:title" content="WangJinPing's blog">
 <meta property="og:url" content="http://jinpingwang.github.io/index.html">
-<meta property="og:site_name" content="WangJinPing">
+<meta property="og:site_name" content="WangJinPing's blog">
 <meta property="og:description" content="Waiting for the wind">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="WangJinPing">
+<meta name="twitter:title" content="WangJinPing's blog">
 <meta name="twitter:description" content="Waiting for the wind">
 
 
@@ -73,7 +73,7 @@
   };
 </script>
 
-  <title> WangJinPing </title>
+  <title> WangJinPing's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -108,7 +108,7 @@
   <div class="custom-logo-site-title">
     <a href="/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">WangJinPing</span>
+      <span class="site-title">WangJinPing's blog</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -200,7 +200,7 @@
     e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
   })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
 
-  _st('install', 'Nbs1dz74mrf7hR7LkB2L','2.0.0');
+  _st('install', 'Aq7px34mBsH6UhwK43yW','2.0.0');
 </script>
 
 
@@ -314,8 +314,7 @@
         
           <span itemprop="articleBody">
             
-              <p> begin</p>
-<h2 id="u9898_u76EE_u63CF_u8FF0"><a href="#u9898_u76EE_u63CF_u8FF0" class="headerlink" title="题目描述"></a>题目描述</h2><p>在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。 </p>
+              <h2 id="u9898_u76EE_u63CF_u8FF0"><a href="#u9898_u76EE_u63CF_u8FF0" class="headerlink" title="题目描述"></a>题目描述</h2><p>在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。 </p>
 <h2 id="u8F93_u5165_u63CF_u8FF0"><a href="#u8F93_u5165_u63CF_u8FF0" class="headerlink" title="输入描述"></a>输入描述</h2><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">array： 待查找的二维数组</span><br><span class="line"><span class="keyword">target</span>：查找的数字</span><br></pre></td></tr></table></figure>
 <h2 id="u8F93_u51FA_u63CF_u8FF0"><a href="#u8F93_u51FA_u63CF_u8FF0" class="headerlink" title="输出描述"></a>输出描述</h2><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">查找到返回<span class="literal">true</span>，查找不到返回<span class="literal">false</span></span><br></pre></td></tr></table></figure>
 <h2 id="java_u4EE3_u7801_u5B9E_u73B0"><a href="#java_u4EE3_u7801_u5B9E_u73B0" class="headerlink" title="java代码实现"></a>java代码实现</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> boolean <span class="title">find</span><span class="params">(<span class="keyword">int</span> [][] <span class="built_in">array</span>,<span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">array</span>.length==<span class="number">0</span>)</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		<span class="keyword">int</span> row=<span class="built_in">array</span>.length;</span><br><span class="line">		<span class="keyword">int</span> col=<span class="built_in">array</span>[<span class="number">0</span>].length;</span><br><span class="line">		<span class="keyword">int</span> i=<span class="number">0</span>,j=col-<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span>(i&lt;row &amp;&amp; j&gt;=<span class="number">0</span>)&#123;</span><br><span class="line">			<span class="keyword">if</span>(<span class="built_in">array</span>[i][j]==target)</span><br><span class="line">				<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">			<span class="keyword">if</span>(<span class="built_in">array</span>[i][j]&gt;target)</span><br><span class="line">				j--;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				i++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
