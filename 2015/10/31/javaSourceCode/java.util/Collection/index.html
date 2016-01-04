@@ -69,7 +69,7 @@ d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active"
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="java, bootstrap, wangjinping" />
+  <meta name="keywords" content="java.util,java源码," />
 
 
 
@@ -87,16 +87,16 @@ d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active"
 
 
 
-<meta name="description" content="门前草在结它的种子；风在摇它的叶子；我们站着，不说话；就十分美好。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="http://jinpingwang.github.io/about/index.html">
+<meta name="description" content="本文介绍了接口Collection的接口。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java源码之Collection">
+<meta property="og:url" content="http://jinpingwang.github.io/2015/10/31/javaSourceCode/java.util/Collection/index.html">
 <meta property="og:site_name" content="WangJinPing's blog">
-<meta property="og:description" content="门前草在结它的种子；风在摇它的叶子；我们站着，不说话；就十分美好。">
-<meta property="og:updated_time" content="2015-12-30T03:02:07.107Z">
+<meta property="og:description" content="本文介绍了接口Collection的接口。">
+<meta property="og:updated_time" content="2016-01-04T12:10:32.857Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="about">
-<meta name="twitter:description" content="门前草在结它的种子；风在摇它的叶子；我们站着，不说话；就十分美好。">
+<meta name="twitter:title" content="java源码之Collection">
+<meta name="twitter:description" content="本文介绍了接口Collection的接口。">
 
 
 
@@ -108,13 +108,7 @@ d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active"
   };
 </script>
 
-  <title>
-  
-
-  
-    about | WangJinPing's blog
-  
-</title>
+  <title> java源码之Collection | WangJinPing's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -135,7 +129,7 @@ d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active"
 
 
 
-  <div class="container one-column ">
+  <div class="container one-column page-post-detail">
 
 <!-- this div is what i add -->
   <div class="hidden-xs hidden-sm">
@@ -262,13 +256,128 @@ d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active"
 
   <div id="posts" class="posts-expand">
     
-    
-      <hr>
-<blockquote>
-<h3 id="u95E8_u524D"><a href="#u95E8_u524D" class="headerlink" title="门前"></a>门前</h3><h4 id="u8349_u5728_u7ED3_u5B83_u7684_u79CD_u5B50_uFF1B"><a href="#u8349_u5728_u7ED3_u5B83_u7684_u79CD_u5B50_uFF1B" class="headerlink" title="草在结它的种子；"></a>草在结它的种子；</h4><h4 id="u98CE_u5728_u6447_u5B83_u7684_u53F6_u5B50_uFF1B"><a href="#u98CE_u5728_u6447_u5B83_u7684_u53F6_u5B50_uFF1B" class="headerlink" title="风在摇它的叶子；"></a>风在摇它的叶子；</h4><h4 id="u6211_u4EEC_u7AD9_u7740_uFF0C_u4E0D_u8BF4_u8BDD_uFF1B"><a href="#u6211_u4EEC_u7AD9_u7740_uFF0C_u4E0D_u8BF4_u8BDD_uFF1B" class="headerlink" title="我们站着，不说话；"></a>我们站着，不说话；</h4><h4 id="u5C31_u5341_u5206_u7F8E_u597D_u3002"><a href="#u5C31_u5341_u5206_u7F8E_u597D_u3002" class="headerlink" title="就十分美好。"></a>就十分美好。</h4></blockquote>
-<hr>
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                java源码之Collection
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-10-31T12:37:41+08:00" content="2015-10-31">
+              2015-10-31
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/java-util/" itemprop="url" rel="index">
+                    <span itemprop="name">java.util</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/10/31/javaSourceCode/java.util/Collection/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/31/javaSourceCode/java.util/Collection/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>本文介绍了接口Collection的接口。<br><a id="more"></a></p>
+<h3 id="u6E90_u4EE3_u7801"><a href="#u6E90_u4EE3_u7801" class="headerlink" title="源代码"></a>源代码</h3><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">package java.util;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.function.<span class="type">Predicate</span>;</span><br><span class="line"></span><br><span class="line">public <span class="keyword">interface</span> <span class="type">Collection</span>&lt;E&gt; extends <span class="type">Iterable</span> &#123;</span><br><span class="line">	</span><br><span class="line">	<span class="type">int</span> size();</span><br><span class="line">	</span><br><span class="line">	boolean isEmpty();</span><br><span class="line">	</span><br><span class="line">	boolean contains(<span class="type">Object</span> o);</span><br><span class="line">	</span><br><span class="line">	/**</span><br><span class="line">	 * <span class="type">Collection</span>&lt;E&gt;已经继承了<span class="type">Iterable</span>&lt;E&gt;</span><br><span class="line">	 * 而<span class="type">Iterable</span>&lt;E&gt;中已经定义了<span class="keyword">iterator</span>()</span><br><span class="line">	 * 这个函数接口了，之所以在<span class="type">Collection</span>&lt;E&gt;</span><br><span class="line">	 * 重新定义只是作为显示而已</span><br><span class="line">	 */</span><br><span class="line">	<span class="type">Iterator</span>&lt;E&gt; <span class="keyword">iterator</span>();</span><br><span class="line">	</span><br><span class="line">	/**</span><br><span class="line">	 * 这个返回的值是一个复本</span><br><span class="line">	 */</span><br><span class="line">	<span class="type">Object</span>[] toArray();</span><br><span class="line">	</span><br><span class="line">	&lt;T&gt; T[] toArray(T[] a);</span><br><span class="line">	</span><br><span class="line">	//没有说明在哪个位置进行添加，因为集合没有位置的概念</span><br><span class="line">	boolean add(E e);</span><br><span class="line">	</span><br><span class="line">	//解释：源码中的@<span class="keyword">return</span>这一句：</span><br><span class="line">	//@<span class="keyword">return</span> &lt;tt&gt;<span class="literal">true</span>&lt;/tt&gt; <span class="keyword">if</span> an element was removed <span class="keyword">as</span> a <span class="literal">result</span> <span class="keyword">of</span> this call</span><br><span class="line">	//说的是删除一个元素，如果有多个重复的元素，应该是删除第一个出现的元素</span><br><span class="line">	//同时也可以从<span class="type">AbstractCollection</span>中的remove函数看出来</span><br><span class="line">	boolean remove(<span class="type">Object</span> o);</span><br><span class="line">	</span><br><span class="line">	boolean containsAll(<span class="type">Collection</span>&lt;?&gt; c);</span><br><span class="line">	</span><br><span class="line">	boolean addAll(<span class="type">Collection</span>&lt;? extends E&gt; c);</span><br><span class="line">	</span><br><span class="line">	boolean removeAll(<span class="type">Collection</span>&lt;?&gt; c);</span><br><span class="line">	</span><br><span class="line">	/**</span><br><span class="line">	 * 删除除了c里面的其它元素</span><br><span class="line">	 */</span><br><span class="line">	boolean retrainAll(<span class="type">Collection</span>&lt;?&gt; c);</span><br><span class="line">	</span><br><span class="line">	<span class="type">void</span> clear();</span><br><span class="line">	</span><br><span class="line">	boolean equals(<span class="type">Object</span> o);</span><br><span class="line">	</span><br><span class="line">	<span class="type">int</span> hashCode();</span><br><span class="line">	</span><br><span class="line">	default boolean removeIf(<span class="type">Predicate</span>&lt;? super E&gt; filter)&#123;</span><br><span class="line">		<span class="type">Objects</span>.requireNonNull(filter);</span><br><span class="line">		boolean removed=<span class="literal">false</span>;</span><br><span class="line">		final <span class="type">Iterator</span>&lt;E&gt; each=<span class="keyword">iterator</span>();</span><br><span class="line">		<span class="keyword">while</span>(each.hasNext())&#123;</span><br><span class="line">			<span class="keyword">if</span>(filter.test(each.next()))&#123;</span><br><span class="line">				each.remove();</span><br><span class="line">				removed=<span class="literal">true</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> removed;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="u5256_u6790"><a href="#u5256_u6790" class="headerlink" title="剖析"></a>剖析</h3><p>这个接口也挺简单的，定义了一些关于集合的方法。</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java-util/" rel="tag">#java.util</a>
+          
+            <a href="/tags/java源码/" rel="tag">#java源码</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/10/30/javaSourceCode/java.lang/Iterable/" rel="next" title="java源码之Iterable">
+                <i class="fa fa-chevron-left"></i> java源码之Iterable
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/10/31/javaSourceCode/java.util/AbstractCollection/" rel="prev" title="java源码之AbstractCollection">
+                java源码之AbstractCollection <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -280,8 +389,8 @@ d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active"
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="about/index.html"
-           data-title="about" data-url="http://jinpingwang.github.io/about/index.html">
+      <div class="ds-thread" data-thread-key="2015/10/31/javaSourceCode/java.util/Collection/"
+           data-title="java源码之Collection" data-url="http://jinpingwang.github.io/2015/10/31/javaSourceCode/java.util/Collection/">
       </div>
     
   </div>
@@ -306,8 +415,17 @@ d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active"
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" src="/images/headImage.jpg" alt="王谨平" itemprop="image"/>
           <p class="site-author-name" itemprop="name">王谨平</p>
@@ -392,6 +510,23 @@ d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active"
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#u6E90_u4EE3_u7801"><span class="nav-number">1.</span> <span class="nav-text">源代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u5256_u6790"><span class="nav-number">2.</span> <span class="nav-text">剖析</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
       
 
     </div>
@@ -479,6 +614,167 @@ d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active"
   <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
   
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
 
   <script type="text/javascript" src="/js/bootstrap.js"></script>
 
