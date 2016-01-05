@@ -87,16 +87,31 @@ d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active"
 
 
 
-<meta name="description" content="wjp                        草在结它的种子；风在摇它的叶子；我们站着，不说话；就十分美好。                       －－《门前》                                        GitHub            Blog            Twitter            WeiBo">
+<meta name="description" content="wjp                        草在结它的种子；风在摇它的叶子；我们站着，不说话；就十分美好。                       －－《门前》                        
+
+
+    $(document).ready(function () {
+        var delay = 1;
+        var DELAY_STEP = 20">
 <meta property="og:type" content="website">
 <meta property="og:title" content="about">
 <meta property="og:url" content="http://jinpingwang.github.io/about/index.html">
 <meta property="og:site_name" content="WangJinPing's blog">
-<meta property="og:description" content="wjp                        草在结它的种子；风在摇它的叶子；我们站着，不说话；就十分美好。                       －－《门前》                                        GitHub            Blog            Twitter            WeiBo">
-<meta property="og:updated_time" content="2016-01-05T08:31:03.161Z">
+<meta property="og:description" content="wjp                        草在结它的种子；风在摇它的叶子；我们站着，不说话；就十分美好。                       －－《门前》                        
+
+
+    $(document).ready(function () {
+        var delay = 1;
+        var DELAY_STEP = 20">
+<meta property="og:updated_time" content="2016-01-05T08:37:08.993Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="about">
-<meta name="twitter:description" content="wjp                        草在结它的种子；风在摇它的叶子；我们站着，不说话；就十分美好。                       －－《门前》                                        GitHub            Blog            Twitter            WeiBo">
+<meta name="twitter:description" content="wjp                        草在结它的种子；风在摇它的叶子；我们站着，不说话；就十分美好。                       －－《门前》                        
+
+
+    $(document).ready(function () {
+        var delay = 1;
+        var DELAY_STEP = 20">
 
 
 
@@ -263,43 +278,42 @@ d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active"
   <div id="posts" class="posts-expand">
     
     
-      <div class="vi"><br>    <div class="sidebar"><br>        <div class="header"><br>            <h1>wjp</h1><br>            <div class="quote"><br>            <p><pre class="quote-text animate-init">草在结它的种子；风在摇它的叶子；<br>我们站着，不说话；<br>就十分美好。</pre></p><br>        <p><strong><pre class="quote-author animate-init">               －－《门前》</pre></strong></p><br>            </div><br>        </div><br>        <div class="menu"><br>            <a href="https://github.com/jinpingwang" class="animate-init" target="_blank" rel="external">GitHub</a><br>            <a href="http://blog.wangjinping.top" class="animate-init" target="_blank" rel="external">Blog</a><br>            <a href="https://twitter.com/@349268138Jin" class="animate-init" target="_blank" rel="external">Twitter</a><br>            <a href="http://weibo.com/1848729614" class="animate-init" target="_blank" rel="external">WeiBo</a><br>        </div><br>        <div class="location"><br>            <i class="location-icon"></i><br>            <span class="location-text animate-init">ChengDu - China</span><br>        </div><br>    </div>
+      <p><div class="vi"><br>    <div class="sidebar"><br>        <div class="header"><br>            <h1>wjp</h1><br>            <div class="quote"><br>            <p><pre class="quote-text animate-init">草在结它的种子；风在摇它的叶子；<br>我们站着，不说话；<br>就十分美好。</pre></p><br>        <p><strong><pre class="quote-author animate-init">               －－《门前》</pre></strong></p><br>            </div><br>        </div><br>    </div><br></div></p>
+<script type="text/javascript" src="assets/vendors/jquery/index.js"></script>
+<script>
+    $(document).ready(function () {
+        var delay = 1;
+        var DELAY_STEP = 200;
+        var animationOptions = { opacity: 1, top: 0};
 
-<pre><code>&lt;div class=&quot;content&quot;&gt;
-    &lt;span class=&quot;close&quot;&gt;close&lt;/span&gt;
-&lt;/div&gt;
-</code></pre><p></p></div><p></p>
-<p><script type="text/javascript" src="assets/vendors/jquery/index.js"></script></p>
-<p><script><br>    $(document).ready(function () {<br>        var delay = 1;<br>        var DELAY_STEP = 200;<br>        var animationOptions = { opacity: 1, top: 0};</p>
-<pre><code>    $(&apos;h1&apos;).animate(animationOptions).promise()
-            .pipe(animateMain)
-            .pipe(animateLocationIcon);
+        $('h1').animate(animationOptions).promise()
+                .pipe(animateMain)
+                .pipe(animateLocationIcon);
 
-    function animateMain() {
-        var dfd = $.Deferred();
-        var els = $(&apos;.animate-init&apos;);
-        var size = els.size();
+        function animateMain() {
+            var dfd = $.Deferred();
+            var els = $('.animate-init');
+            var size = els.size();
 
-        els.each(function (index, el) {
-            delay++;
-            $(el).delay(index * DELAY_STEP)
-                    .animate(animationOptions);
-            (size - 1 === index) &amp;&amp; dfd.resolve();
-        });
-        return dfd.promise();
-    }
+            els.each(function (index, el) {
+                delay++;
+                $(el).delay(index * DELAY_STEP)
+                        .animate(animationOptions);
+                (size - 1 === index) && dfd.resolve();
+            });
+            return dfd.promise();
+        }
 
-    function animateLocationIcon() {
-        $(&apos;.location-icon&apos;).delay(delay * DELAY_STEP).animate({
-            opacity: 1,
-            top: 0
-        }).promise().done(animationQuote);
-    }
+        function animateLocationIcon() {
+            $('.location-icon').delay(delay * DELAY_STEP).animate({
+                opacity: 1,
+                top: 0
+            }).promise().done(animationQuote);
+        }
 
-    function animationQuote() {}
-});
-</code></pre><p></script><br>&lt;!–</p>
-<p><div class="quote"><br>            <p><pre class="quote-text animate-init">草在结它的种子；风在摇它的叶子；<br>我们站着，不说话；<br>就十分美好。</pre></p><br>        <p><strong><pre class="quote-author animate-init">               －－《门前》</pre></strong></p><br></div><br>–&gt;</p>
+        function animationQuote() {}
+    });
+</script>
 
     
   </div>
