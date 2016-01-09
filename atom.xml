@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://jinpingwang.github.io/"/>
-  <updated>2016-01-04T11:34:13.280Z</updated>
+  <updated>2016-01-09T09:30:41.452Z</updated>
   <id>http://jinpingwang.github.io/</id>
   
   <author>
@@ -13,6 +13,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[bootstrap之全局样式]]></title>
+    <link href="http://jinpingwang.github.io/2016/01/09/bootstrap/1:bootstrap%E4%B9%8B%E5%85%A8%E5%B1%80%E6%A0%B7%E5%BC%8F/"/>
+    <id>http://jinpingwang.github.io/2016/01/09/bootstrap/1:bootstrap之全局样式/</id>
+    <published>2016-01-09T07:02:21.000Z</published>
+    <updated>2016-01-09T09:30:41.452Z</updated>
+    <content type="html"><![CDATA[<p>介绍了bootstrap中对html,body,以设置全局样式。</p>
+<h3 id="u6E90_u7801"><a href="#u6E90_u7801" class="headerlink" title="源码"></a>源码</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">html</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">font-family</span>:<span class="value"> sans-serif</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">-webkit-text-size-adjust</span>:<span class="value"> <span class="number">100%</span></span></span>;</span><br><span class="line">      <span class="rule"><span class="attribute">-ms-text-size-adjust</span>:<span class="value"> <span class="number">100%</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">html</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">10px</span></span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">-webkit-tap-highlight-color</span>:<span class="value"> <span class="function">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">body</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">0</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">body</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">font-family</span>:<span class="value"> <span class="string">"Helvetica Neue"</span>, Helvetica, Arial, sans-serif</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">14px</span></span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">line-height</span>:<span class="value"> <span class="number">1.42857143</span></span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">color</span>:<span class="value"> <span class="hexcolor">#333</span></span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">background-color</span>:<span class="value"> <span class="hexcolor">#fff</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"></span><br><span class="line">* <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">-webkit-box-sizing</span>:<span class="value"> border-box</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">-moz-box-sizing</span>:<span class="value"> border-box</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">box-sizing</span>:<span class="value"> border-box</span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"></span><br><span class="line">*<span class="pseudo">:before</span>, *<span class="pseudo">:after</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">-webkit-box-sizing</span>:<span class="value"> border-box</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">-moz-box-sizing</span>:<span class="value"> border-box</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">box-sizing</span>:<span class="value"> border-box</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="u5256_u6790"><a href="#u5256_u6790" class="headerlink" title="剖析"></a>剖析</h3><h4 id="html_u5143_u7D20"><a href="#html_u5143_u7D20" class="headerlink" title="html元素"></a>html元素</h4><p><code>font-family: sans-serif</code>：设置字体，如果子元素没有设置字体，则默认会使用该字体。<br><code>-webkit-text-size-adjust: 100%;</code>：以chrome为内核的浏览器，显示中文时如果font-size小于12px时，就默认用12px，使用这个属性可以修改这个操作。<br><code>-ms-text-size-adjust</code>：As of Internet Explorer for Windows Phone 8.1 Update, Internet Explorer for Windows Phone supports “-webkit-text-size-adjust” as an alias for this property.<br><code>font-size</code>：字体设置。<br><code>-webkit-tap-highlight-color</code>：是一个 不规范的属性（unsupported WebKit property），它没有出现在 CSS 规范草案中。当用户点击iOS的Safari浏览器中的链接或JavaScript的可点击的元素时，覆盖显示的高亮颜色。</p>
+<h4 id="body_u5143_u7D20"><a href="#body_u5143_u7D20" class="headerlink" title="body元素"></a>body元素</h4><p><code>margin</code>：设置外边距。<br><code>font-family</code>：设置字体。<br><code>font-size</code>：设置字体大小。<br><code>line-height</code>：设置行高。<br><code>color</code>：设置字体颜色。<br><code>background-color</code>：设置背景颜色。</p>
+<h4 id="u6BCF_u4E2A_u5143_u7D20_u901A_u7528"><a href="#u6BCF_u4E2A_u5143_u7D20_u901A_u7528" class="headerlink" title="每个元素通用"></a>每个元素通用</h4><p><code>box-sizing</code>：<br>box-sizing属性可以为三个值之一：content-box（default），border-box，padding-box。<br>content-box，border和padding不计算入width之内<br>padding-box，padding计算入width内<br>border-box，border和padding计算入width之内，其实就是怪异模式了。</p>
+<p>对不同的浏览器有不同的使用方式：<br>-webkit-box-sizing: border-box; // for ios-safari, android<br>-moz-box-sizing: border-box; //for ff<br>box-sizing: border-box; //for other</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>介绍了bootstrap中对html,body,以设置全局样式。</p>
+<h3 id="u6E90_u7801"><a href="#u6E90_u7801" class="headerlink" title="源码"></a>源码</h3><figure class="]]>
+    </summary>
+    
+      <category term="bootstrap" scheme="http://jinpingwang.github.io/tags/bootstrap/"/>
+    
+      <category term="bootstrap" scheme="http://jinpingwang.github.io/categories/bootstrap/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[二维数组中的查找]]></title>
